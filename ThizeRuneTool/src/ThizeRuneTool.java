@@ -2,7 +2,13 @@ import java.awt.AWTException;
 import java.awt.Image;
 import java.awt.Robot;
 import java.awt.Toolkit;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.DataFlavor;
+import java.awt.datatransfer.StringSelection;
+import java.awt.datatransfer.Transferable;
+import java.awt.datatransfer.UnsupportedFlavorException;
 import java.awt.event.InputEvent;
+import java.awt.event.KeyEvent;
 import java.io.IOException;
 
 import org.jsoup.Jsoup;
@@ -65,6 +71,7 @@ public class ThizeRuneTool extends javax.swing.JFrame {
 		lane = new javax.swing.JComboBox<>();
 		tChamp = new javax.swing.JLabel();
 		tLane = new javax.swing.JLabel();
+		selecao = new javax.swing.JCheckBox();
 		tThize = new javax.swing.JLabel();
 		tVers = new javax.swing.JLabel();
 		start = new javax.swing.JButton();
@@ -93,6 +100,12 @@ public class ThizeRuneTool extends javax.swing.JFrame {
 		win.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Highest Win", "Most Frequent" }));
 		getContentPane().add(win);
 		win.setBounds(200, 350, 124, 20);
+
+		selecao.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+		selecao.setText("In Champion Select");
+
+		getContentPane().add(selecao);
+		selecao.setBounds(190, 380, 135, 23);
 
 		tStat.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
 		tStat.setForeground(new java.awt.Color(0, 0, 0));
@@ -192,7 +205,7 @@ public class ThizeRuneTool extends javax.swing.JFrame {
 	}
 
 	private void attActionPerformed(java.awt.event.ActionEvent evt) {
-		System.out.println("Em implementação");
+		
 	}
 
 	public void span(String url, int a, int k, String palavra) {
@@ -237,7 +250,7 @@ public class ThizeRuneTool extends javax.swing.JFrame {
 		}
 	}
 
-	public static void pegarRuna(String url, int z, int n) throws InterruptedException {
+	public void pegarRuna(String url, int z, int n) throws InterruptedException {
 		Document web = null;
 		try {
 			web = Jsoup.connect(url).get();
@@ -248,6 +261,7 @@ public class ThizeRuneTool extends javax.swing.JFrame {
 		Elements rw = clas.get(z).select("tr");
 		int k = 0;
 		int p = 23;
+		// MudarModelo:
 		clicar(-69, 345);
 		for (int i = 0; i < p; i++) {
 			int aux = 0;
@@ -277,7 +291,10 @@ public class ThizeRuneTool extends javax.swing.JFrame {
 				aux++;
 			}
 		}
+		nomearRuna(266, -205);
+		// Salvar:
 		clicar(266, -205);
+
 	}
 
 	private static void runaPrincipal(String attr, int i) throws InterruptedException {
@@ -345,11 +362,43 @@ public class ThizeRuneTool extends javax.swing.JFrame {
 		}
 	}
 
-	private static void clicar(int x, int y) throws InterruptedException {
-		Thread.sleep(100);
-		robot.mouseMove((x + 186), (y + 341));
+	private void clicar(int x, int y) throws InterruptedException {
+		Thread.sleep(150);
+		if (selecao.isSelected()) {
+			robot.mouseMove((x + 286), (y + 341));
+		} else {
+			robot.mouseMove((x + 186), (y + 341));
+		}
 		robot.mousePress(InputEvent.BUTTON1_MASK);
 		robot.mouseRelease(InputEvent.BUTTON1_MASK);
+	}
+
+	private void nomearRuna(int x, int y) throws InterruptedException {
+
+		clicar(-92, -205);
+		clicar(157, -204);
+		clicar(157, -204);
+		clicar(157, -204);
+		String stat;
+		Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+
+		if (win.getSelectedItem().equals("Most Frequent")) {
+			stat = "MF";
+		} else {
+			stat = "HW";
+		}
+		String text = champ.getSelectedItem() + "|" + lane.getSelectedItem() + "|" + stat;
+		StringSelection selection = new StringSelection(text);
+		clipboard.setContents(selection, null);
+
+		try {
+			robot.keyPress(KeyEvent.VK_CONTROL);
+			robot.keyPress(KeyEvent.VK_V);
+			robot.keyRelease(KeyEvent.VK_CONTROL);
+			robot.keyRelease(KeyEvent.VK_V);
+		} catch (Exception e) {
+
+		}
 	}
 
 	private static void runasGerais(String attr, int i) {
@@ -441,7 +490,7 @@ public class ThizeRuneTool extends javax.swing.JFrame {
 		}
 	}
 
-	private static void ChamarCampeao(Object champ, Object lane, Object stat) throws InterruptedException {
+	private void ChamarCampeao(Object champ, Object lane, Object stat) throws InterruptedException {
 		String url = "https://br.op.gg/champion/" + champ + "/statistics/" + lane;
 		ThizeRuneTool scrapper = new ThizeRuneTool();
 		if (stat.equals("Highest Win")) {
@@ -451,7 +500,7 @@ public class ThizeRuneTool extends javax.swing.JFrame {
 		}
 	}
 
-	private static void winrate(String url, ThizeRuneTool scrapper) throws InterruptedException {
+	private void winrate(String url, ThizeRuneTool scrapper) throws InterruptedException {
 		scrapper.span(url, 1, 0, "strong");
 		scrapper.span(url, 1, 1, "strong");
 		if (w >= x && w >= y && w >= z) {
@@ -466,7 +515,7 @@ public class ThizeRuneTool extends javax.swing.JFrame {
 
 	}
 
-	private static void escolha(String url, ThizeRuneTool scrapper) throws InterruptedException {
+	private void escolha(String url, ThizeRuneTool scrapper) throws InterruptedException {
 		scrapper.span(url, 0, 0, "span");
 		scrapper.span(url, 0, 1, "span");
 		if (w >= x && w >= y && w >= z) {
@@ -485,6 +534,7 @@ public class ThizeRuneTool extends javax.swing.JFrame {
 	private javax.swing.JComboBox<String> champ;
 	private javax.swing.JLabel fundo;
 	private javax.swing.JLabel jLabel1;
+	private javax.swing.JCheckBox selecao;
 	private javax.swing.JLayeredPane jLayeredPane1;
 	private javax.swing.JComboBox<String> lane;
 	private javax.swing.JButton start;
@@ -496,5 +546,4 @@ public class ThizeRuneTool extends javax.swing.JFrame {
 	private javax.swing.JComboBox<String> win;
 	// End of variables declaration
 
-	
 }
