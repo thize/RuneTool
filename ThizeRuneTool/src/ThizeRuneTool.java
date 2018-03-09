@@ -346,7 +346,7 @@ public class ThizeRuneTool extends javax.swing.JFrame {
 	}
 
 	private static void clicar(int x, int y) throws InterruptedException {
-		Thread.sleep(60);
+		Thread.sleep(100);
 		robot.mouseMove((x + 186), (y + 341));
 		robot.mousePress(InputEvent.BUTTON1_MASK);
 		robot.mouseRelease(InputEvent.BUTTON1_MASK);
@@ -496,4 +496,5 @@ public class ThizeRuneTool extends javax.swing.JFrame {
 	private javax.swing.JComboBox<String> win;
 	// End of variables declaration
 
+	
 }
