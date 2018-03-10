@@ -205,7 +205,6 @@ public class ThizeRuneTool extends javax.swing.JFrame {
 	}
 
 	private void attActionPerformed(java.awt.event.ActionEvent evt) {
-		
 	}
 
 	public void span(String url, int a, int k, String palavra) {
@@ -259,7 +258,7 @@ public class ThizeRuneTool extends javax.swing.JFrame {
 		}
 		Elements clas = web.getElementsByTag("tbody");
 		Elements rw = clas.get(z).select("tr");
-		int k = 0;
+		int d = 0;//paraRunaDeDeterminação
 		int p = 23;
 		// MudarModelo:
 		clicar(-69, 345);
@@ -268,13 +267,13 @@ public class ThizeRuneTool extends javax.swing.JFrame {
 			for (Element row : rw) {
 				if (aux == n) {
 					Elements img = row.getElementsByTag("img");
-					if (i == k) {
+					if (i == d) {
 						if (img.get(i).attr("src")
 								.equals("//opgg-static.akamaized.net/images/lol/perkStyle/8400.png")) {
-							k = 14;
+							d = 14;
 							p++;
 						} else {
-							k = 13;
+							d = 13;
 						}
 						runaPrincipal(img.get(i).attr("src"), i);
 						clicar(x, y);
@@ -363,7 +362,7 @@ public class ThizeRuneTool extends javax.swing.JFrame {
 	}
 
 	private void clicar(int x, int y) throws InterruptedException {
-		Thread.sleep(150);
+		Thread.sleep(200);
 		if (selecao.isSelected()) {
 			robot.mouseMove((x + 286), (y + 341));
 		} else {
@@ -374,7 +373,6 @@ public class ThizeRuneTool extends javax.swing.JFrame {
 	}
 
 	private void nomearRuna(int x, int y) throws InterruptedException {
-
 		clicar(-92, -205);
 		clicar(157, -204);
 		clicar(157, -204);
@@ -545,5 +543,10 @@ public class ThizeRuneTool extends javax.swing.JFrame {
 	private javax.swing.JLabel tStat;
 	private javax.swing.JComboBox<String> win;
 	// End of variables declaration
+
+	public void jsoup(String url, int ss, int i, String wp) {
+		// TODO Auto-generated method stub
+		
+	}
 
 }
