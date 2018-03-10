@@ -7,7 +7,7 @@
 | ------------- | -----:|
 | League Rune Tool      | [![GitHub issues](https://img.shields.io/badge/Download--feb62b.svg?style=flat-square)]("link download")   
 
-![screenshot ]("link imagem projeto 1") ![screenshot ]("link imagem projeto 2")
+![screenshot ]("https://camo.githubusercontent.com/0506550b6ae9fc3f1edd0f4aa3343bdd5d5a44a2/68747470733a2f2f696d6775722e636f6d2f78644d425170712e706e67") ![screenshot ]("link imagem projeto 2")
 
 
 A tool for managing rune pages in League of Legends. Inspired by [Championify](https://github.com/dustinblackman/Championify).
