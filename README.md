@@ -5,17 +5,12 @@
 
 | Version        | Download |
 | ------------- | -----:|
-| League Rune Tool      | [![GitHub issues](https://img.shields.io/badge/Download--feb62b.svg?style=flat-square)](https://github.com/dewster/lol-mastery-manager-master-new-client/issues) 
+| League Rune Tool      | [![GitHub issues](https://img.shields.io/badge/Download--feb62b.svg?style=flat-square)]("link download")   
 
-> **NOTICE:** Tested 2017/10/03 || v2 Work all Screen Size
-
-> **NOTICE:** Rune Reforged version development started
->  
-
-![screenshot ](http://dewster.hu/git/Screenshot.png) ![screenshot ](http://dewster.hu/git/Screenshot2.png)
+![screenshot ]("link imagem projeto 1") ![screenshot ]("link imagem projeto 2")
 
 
-A tool for managing mastery pages in League of Legends. Inspired by [Championify](https://github.com/dustinblackman/Championify).
+I LOVE Championify [Championify](https://github.com/dustinblackman/Championify).
 
 
 [See it in action! -> Menu](https://raw.githubusercontent.com/dewster/lol-mastery-manager-new-client/master/Menu.gif)
