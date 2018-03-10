@@ -17,21 +17,11 @@ public class Thize_Rune_Tool {
 	private static int x, y, n1, n2, n3, n4;
 	private static Robot robot;
 	private static boolean selecao = false;
-	private static String stat = "dMost Frequent", champ = "maokai", lane = "top";
+	private static String stat = "dMost Frequent", champ = "Maokai", lane = "Top";
 
 	public static void main(String[] args) throws AWTException, InterruptedException, IOException {
 		robot = new Robot();
 		chamarRuna(champ, lane, stat);
-	}
-
-	private Thize_Rune_Tool() {
-		// Cod para colocar Icone no Jframe
-		/*
-		 * Image imagemTitulo =
-		 * Toolkit.getDefaultToolkit().getImage("C:\\Users\\Giovani\\Desktop\\logo.png")
-		 * ; this.setIconImage(imagemTitulo);
-		 */
-		// Fim Cod para colocar Icone no Jframe
 	}
 
 	private static void pegarRuna(String url, int Z, int N) throws IOException, InterruptedException {
@@ -110,7 +100,7 @@ public class Thize_Rune_Tool {
 						d++;// AumentarFor
 						dd++;
 					} else if (i == (dt + 14) || i == (dt + 15) || i == (dt + 16)) {// Linha 1
-						linhasSegundaAba(1, i - (dt+14));
+						linhasSegundaAba(1, i - (dt + 14));
 					}
 					if (p == 13) {
 						if (i == 17 || i == 18 || i == 19 || i == 20) {// Linha 2D
@@ -118,11 +108,11 @@ public class Thize_Rune_Tool {
 						}
 					} else {
 						if (i == (dt + 17) || i == (dt + 18) || i == (dt + 19)) {// Linha 2
-							linhasSegundaAba(2, i - (dt+17));
+							linhasSegundaAba(2, i - (dt + 17));
 						}
 					}
-					if (i == (dt+dd + 20) || i == (dt+dd + 21) || i == (dd +dt+ 22)) {// Linha 3
-						linhasSegundaAba(3, i - (dd+dt+20));
+					if (i == (dt + dd + 20) || i == (dt + dd + 21) || i == (dd + dt + 22)) {// Linha 3
+						linhasSegundaAba(3, i - (dd + dt + 20));
 					}
 				}
 				escolha++;
