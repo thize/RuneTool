@@ -5,8 +5,7 @@
 
 | Version        | Download |
 | ------------- | -----:|
-| LoL Mastery Manager v2      | [![GitHub issues](https://img.shields.io/github/issues/dewster/lol-mastery-manager-master-new-client.svg?style=flat-square)](https://github.com/dewster/lol-mastery-manager-master-new-client/issues) | [![Github All Releases](https://img.shields.io/badge/Download--feb62b.svg?style=flat-square)](https://github.com/dewster/lol-mastery-manager-new-client/releases/download/beta/LoLMasteryManagerSetup.msi) |
-| BETA LoL Mastery Manager v2.1 (RUNE REFORGED)    |  |  ![Github All Releases](https://img.shields.io/badge/Beta%20Download--orange.svg) |
+| League Rune Tool      | [![GitHub issues](https://img.shields.io/badge/Download--feb62b.svg?style=flat-square)](https://github.com/dewster/lol-mastery-manager-master-new-client/issues) 
 
 > **NOTICE:** Tested 2017/10/03 || v2 Work all Screen Size
 
