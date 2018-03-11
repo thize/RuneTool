@@ -5,7 +5,7 @@
 
 | Version        | Download |
 | ------------- | -----:|
-| League Rune Tool v1.0.1      | [![GitHub issues](https://img.shields.io/badge/Download--feb62b.svg?style=flat-square)](https://github.com/thize/ThizeRuneTool/raw/master/Arquivos/ThizeRuneTool%20v1.0.1.exe)   
+| League Rune Tool v1.1.0      | [![GitHub issues](https://img.shields.io/badge/Download--feb62b.svg?style=flat-square)](https://github.com/thize/ThizeRuneTool/raw/master/Arquivos/ThizeRuneTool%20v1.0.1.exe)   
 
 ![scr](https://i.imgur.com/kj22p28.png)
 ![scr](https://i.imgur.com/jFjabJM.png)
@@ -36,7 +36,7 @@ I can't give you any kind of update now or anytime in the immediate future, but 
 ### B E T A
 ---
 - [ ] Auto Update
-- [ ] High Res. (1600+)
+- [x] High Res. (1600+)
 - [x] Full New Material Design
 - [x] Champion Win Rate Stat
 - [x] Champion Pick Rate Stat
