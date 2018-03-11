@@ -27,7 +27,7 @@ public class ThizeRT {
 		robot = new Robot();
 		Rectangle d = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
 	    dpX = (d.width-1280)/2;
-	    dpY = (d.height-720)/2;//
+	    dpY = (d.height-720)/2;
 		Index.main(args);
 	}
 	
