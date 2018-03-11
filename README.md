@@ -9,7 +9,7 @@
 
 | Version        | Download |
 | ------------- | -----:|
-| League Rune Tool v1.0.1      | [![GitHub issues](https://img.shields.io/badge/Download--feb62b.svg?style=flat-square)](https://github.com/thize/ThizeRuneTool/raw/master/Arquivos/ThizeRuneTool%20v1.1.0.exe)   
+| League Rune Tool v1.1.0      | [![GitHub issues](https://img.shields.io/badge/Download--feb62b.svg?style=flat-square)](https://github.com/thize/ThizeRuneTool/raw/master/Arquivos/ThizeRuneTool%20v1.1.0.exe)   
 
 ![scr](https://i.imgur.com/kj22p28.png)
 ![scr](https://i.imgur.com/jFjabJM.png)
