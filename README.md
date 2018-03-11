@@ -13,10 +13,7 @@
 A tool for managing rune pages in League of Legends. Inspired by [Championify](https://github.com/dustinblackman/Championify).
 
 
-[See! -> Menu]("gif menu")
-
-
-[See! -> Champion Select]("gif in game")
+[See! -> Menu]("https://media.giphy.com/media/1gT06nvlnVVvjNeI4R/giphy.gif")
 
 
 ### Will I get banned for using this?
