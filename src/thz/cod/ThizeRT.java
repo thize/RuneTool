@@ -1,4 +1,8 @@
+package thz.cod;
+
 import java.awt.AWTException;
+import java.awt.GraphicsEnvironment;
+import java.awt.Rectangle;
 import java.awt.Robot;
 import java.awt.Toolkit;
 import java.awt.datatransfer.Clipboard;
@@ -12,18 +16,21 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-public class Thize_Rune_Tool {
-	private static int dpy = 10, dcy = 74, dcx = 0, dpx = 44, d, q, dt = 0, posi, aux;
+public class ThizeRT {
+	private static int dpY = 10, dcY, dcX, dpX = 44, d, q, dt = 0, posi, aux;
 	private static int x, y, n1, n2, n3, n4;
+	public static boolean selecao = true;
+	private static String stat = "", champ = "", lane = "";
 	private static Robot robot;
-	private static boolean selecao = false;
-	private static String stat = "dMost Frequent", champ = "Maokai", lane = "Top";
-
+	
 	public static void main(String[] args) throws AWTException, InterruptedException, IOException {
 		robot = new Robot();
-		chamarRuna(champ, lane, stat);
+		Rectangle d = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
+	    dpX = (d.width-1280)/2;
+	    dpY = (d.height-720)/2;//
+		Index.main(args);
 	}
-
+	
 	private static void pegarRuna(String url, int Z, int N) throws IOException, InterruptedException {
 		Document web = null;
 		// N : Runa Desejada
@@ -31,7 +38,7 @@ public class Thize_Rune_Tool {
 		web = Jsoup.connect(url).get();
 		Elements clas = web.getElementsByTag("tbody");
 		Elements rw = clas.get(Z).select("tr");
-		d = 23;// paraRunaDeDeterminação
+		d = 23;// paraRunaDeDeterminaï¿½ï¿½o
 		q = 12;// Quantidade de elementos na runa
 		clicar(73, 600);// MudarLayout Runas
 		primeiraAbaRuna(N, rw);
@@ -53,7 +60,7 @@ public class Thize_Rune_Tool {
 					if (i == 0)
 						classeRuna(img.get(i).attr("src"), 1);
 					if (i == 0 && img.get(i).attr("src")
-							.equals("//opgg-static.akamaized.net/images/lol/perkStyle/8400.png")/* Determinação */) {
+							.equals("//opgg-static.akamaized.net/images/lol/perkStyle/8400.png")/* Determinaï¿½ï¿½o */) {
 						q++;
 						d++;// AumentarSegundoForPara2Runa
 						dt = 1;
@@ -83,7 +90,7 @@ public class Thize_Rune_Tool {
 
 	private static void segundaAbaRuna(int N, Elements rw, int d, int q) throws InterruptedException {
 		// SegundaAbaDasRunas
-		int p = 0;
+		int p = 12;
 		int dd = 0;
 		for (int i = (q + 1); i < d; i++) {
 			int escolha = 0;
@@ -163,13 +170,13 @@ public class Thize_Rune_Tool {
 		Thread.sleep(200);
 		// Distancia Cliente = dc
 		// Distancia PC = dp
-		dcx = 0;
-		dcx = 0;
+		dcX = 0;
+		dcY = 74;
 		if (selecao) {// ChampionSelect
-			dcx = 5;
-			dcy = 4;
+			dcX = 109;
+			dcY -= 3;
 		}
-		robot.mouseMove((x + dcx + dpx), (y + dcy + dpy));
+		robot.mouseMove((x + dcX + dpX), (y + dcY + dpY));
 		robot.mousePress(InputEvent.BUTTON1_MASK);// Clicar
 		robot.mouseRelease(InputEvent.BUTTON1_MASK);// Clicar
 	}
@@ -211,14 +218,9 @@ public class Thize_Rune_Tool {
 		clicar(x, y);
 	}
 
-	private void jsoup(String url, int a, int k, String palavra) {
-		// TODO Arrumar esse Codigo Feio
+	private void jsoup(String url, int a, int k, String palavra) throws IOException {
 		Document web = null;
-		try {
-			web = Jsoup.connect(url).get();
-		} catch (IOException ioe) {
-			ioe.printStackTrace();
-		}
+		web = Jsoup.connect(url).get();
 		Elements clas = web.getElementsByTag("tbody");
 		Elements rw = null;
 		if (k == 0) {
@@ -261,12 +263,23 @@ public class Thize_Rune_Tool {
 		clicar(294, 52);// NomearRuna
 		String stat;
 		Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+		if (lane.equals("top")) {
+			lane = "Top";
+		} else if (lane.equals("jungle")) {
+			lane = "Jg";
+		} else if (lane.equals("mid")) {
+			lane = "Mid";
+		} else if (lane.equals("adc")) {
+			lane = "Adc";
+		} else {
+			lane = "Sup";
+		}
 		if (win.equals("Most Frequent")) {
 			stat = "MF";
 		} else {
 			stat = "HW";
 		}
-		String text = champ + "|" + lane + "|" + stat;
+		String text = champ + " | " + lane + " | " + stat;
 		StringSelection selection = new StringSelection(text);
 		clipboard.setContents(selection, null);
 
@@ -280,17 +293,20 @@ public class Thize_Rune_Tool {
 		}
 	}
 
-	private static void chamarRuna(String champ, String lane, String stat) throws InterruptedException, IOException {
-		String url = "https://br.op.gg/champion/" + champ + "/statistics/" + lane;
-		Thize_Rune_Tool scrapper = new Thize_Rune_Tool();
-		if (stat.equals("Most Frequent")) {
+	static void chamarRuna(String champp, String lanee, String statt) throws InterruptedException, IOException {
+		champ = champp;
+		stat = statt;
+		lane = lanee;
+		String url = "https://br.op.gg/champion/" + champp + "/statistics/" + lanee;
+		ThizeRT scrapper = new ThizeRT();
+		if (statt.equals("Most Frequent")) {
 			winPick(url, scrapper, 0, "span");
 		} else {
 			winPick(url, scrapper, 1, "strong");
 		}
 	}
 
-	private static void winPick(String url, Thize_Rune_Tool scrapper, int ss, String wp)
+	private static void winPick(String url, ThizeRT scrapper, int ss, String wp)
 			throws InterruptedException, IOException {
 		scrapper.jsoup(url, ss, 0, wp);// Pick (ss = 0, wp ="span")
 		scrapper.jsoup(url, ss, 1, wp);// Win (ss = 1, wp = "strong")
