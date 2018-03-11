@@ -158,7 +158,7 @@ public class Index extends javax.swing.JFrame {
 	private void ajudaMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_jLabel5MouseClicked
 		try {
 			java.awt.Desktop.getDesktop()
-					.browse(new java.net.URI("https://media.giphy.com/media/1gT06nvlnVVvjNeI4R/giphy.gif"));
+					.browse(new java.net.URI("https://runetool.github.io/#box2"));
 		} catch (URISyntaxException ex) {
 			Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
 		} catch (IOException ex) {
