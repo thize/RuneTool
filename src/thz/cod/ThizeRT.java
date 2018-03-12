@@ -167,7 +167,7 @@ public class ThizeRT {
 	}
 
 	private static void clicar(int x, int y) throws InterruptedException {
-		Thread.sleep(200);
+		Thread.sleep(250);
 		// Distancia Cliente = dc
 		// Distancia PC = dp
 		dcX = 0;
