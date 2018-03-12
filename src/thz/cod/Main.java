@@ -143,7 +143,7 @@ public class Main extends javax.swing.JFrame {
 		getContentPane().add(tThize, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 450, -1, 19));
 		tVer.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
 		tVer.setForeground(new java.awt.Color(153, 153, 153));
-		tVer.setText("v1.1.1");
+		tVer.setText("v"+Double.toString(Index.versaoL));
 		tVer.setBounds(250, 450, -1, 19);
 		tVer.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 		tVer.addMouseListener(new java.awt.event.MouseAdapter() {

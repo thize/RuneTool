@@ -19,18 +19,26 @@ import org.jsoup.select.Elements;
 public class ThizeRT {
 	private static int dpY = 10, dcY, dcX, dpX = 44, d, q, dt = 0, posi, aux;
 	private static int x, y, n1, n2, n3, n4;
+	public static double versaoG;
 	public static boolean selecao = true;
 	private static String stat = "", champ = "", lane = "";
 	private static Robot robot;
-	
+
+	public static void ver() throws IOException {
+		Document web = null;
+		web = Jsoup.connect("https://raw.githubusercontent.com/thize/RuneTool/master/ver.txt").get();
+		Elements clas = web.getElementsByTag("body");
+		versaoG = Double.parseDouble(clas.text());
+	}
+
 	public static void main(String[] args) throws AWTException, InterruptedException, IOException {
 		robot = new Robot();
 		Rectangle d = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
-	    dpX = (d.width-1280)/2;
-	    dpY = (d.height-720)/2;
+		dpX = (d.width - 1280) / 2;
+		dpY = (d.height - 720) / 2;
 		Index.main(args);
 	}
-	
+
 	private static void pegarRuna(String url, int Z, int N) throws IOException, InterruptedException {
 		Document web = null;
 		// N : Runa Desejada
