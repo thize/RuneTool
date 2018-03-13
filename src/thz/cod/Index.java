@@ -16,7 +16,7 @@ public class Index extends javax.swing.JFrame {
 	int xMouse = 0, yMouse = 0;
 	int x = 0, y = 0;
 	static int resX = 0, resY = 0;
-	static double versaoL = 1.2;
+	static double versaoL = 1.3;
 	private String versao = "Update !";
 
 	public Index(int resX, int resY) {
@@ -39,7 +39,6 @@ public class Index extends javax.swing.JFrame {
 		try {
 			ThizeRT.ver();
 		} catch (IOException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		if (ThizeRT.versaoG > versaoL) {

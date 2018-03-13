@@ -22,7 +22,7 @@ public class ThizeRT {
 	public static double versaoG;
 	public static boolean selecao = true;
 	private static String stat = "", champ = "", lane = "";
-	private static Robot robot;
+	static Robot robot;
 
 	public static void ver() throws IOException {
 		Document web = null;
@@ -43,51 +43,33 @@ public class ThizeRT {
 		Document web = null;
 		// N : Runa Desejada
 		// Z : Posi Classe(7 ou 8)
-		try {
-			web = Jsoup.connect(url).get();
-			Elements clas = web.getElementsByTag("tbody");
-			Elements rw = clas.get(Z).select("tr");
-			d = 23;// paraRunaDeDeterminaï¿½ï¿½o
-			q = 12;// Quantidade de elementos na runa
-			clicar(73, 600);// MudarLayout Runas
-			primeiraAbaRuna(N, rw);
-			segundaAbaRuna(N, rw, d, q);
-			// Concluir Runa
-			// nomearRuna(stat, champ, lane);
-			clicar(410, 50);// Salvar
-			// Main.assignMouseColor();}
-		} catch (Exception e) {
-			System.out.println("teste3");
-		}
-
+		web = Jsoup.connect(url).get();
+		Elements clas = web.getElementsByTag("tbody");
+		Elements rw = clas.get(Z).select("tr");
+		d = 23;// paraRunaDeDeterminaï¿½ï¿½o
+		q = 12;// Quantidade de elementos na runa
+		Main.assignReady();
+		clicar(73, 600);// MudarLayout Runas
+		primeiraAbaRuna(N, rw);
+		segundaAbaRuna(N, rw, d, q);
+		// Concluir Runa
+		nomearRuna(stat, champ, lane);
+		clicar(410, 50);// Salvar
 	}
 
 	private static void primeiraAbaRuna(int N, Elements rw) throws InterruptedException {
 		// PrimeiraAbaDasRunas
 		dt = 0;
-		// dt = Adicionar 1 bloco na segunda runa caso primeira seja
-		// Determinacao
+		// dt = Adicionar 1 bloco na segunda runa caso primeira seja Dominacao
 		for (int i = 0; i <= q; i++) {
 			int escolha = 0;
 			for (Element row : rw) {
 				Elements img = row.getElementsByTag("img");
-				if (escolha == N && !img.get(i).attr("src").contains("?image=e_grayscale&v=1")) {// Escolha
-																									// =
-																									// N(0
-																									// ou
-																									// 1)
+				if (escolha == N && !img.get(i).attr("src").contains("?image=e_grayscale&v=1")) {// Escolha = N(0 ou 1)
 					if (i == 0)
 						classeRuna(img.get(i).attr("src"), 1);
 					if (i == 0 && img.get(i).attr("src")
-							.equals("//opgg-static.akamaized.net/images/lol/perkStyle/8400.png")/*
-																								 * Determinaï
-																								 * ¿
-																								 * ½
-																								 * ï
-																								 * ¿
-																								 * ½
-																								 * o
-																								 */) {
+							.equals("//opgg-static.akamaized.net/images/lol/perkStyle/8400.png")/* Determinaï¿½ï¿½o */) {
 						q++;
 						d++;// AumentarSegundoForPara2Runa
 						dt = 1;
@@ -102,14 +84,11 @@ public class ThizeRT {
 							linhasPrimeiraAba(3, i - 7);
 						}
 					} else {
-						if (i == 7 || i == 8 || i == 9 || i == 10) {// Linha 3
-																	// Com
-																	// Determinacao
+						if (i == 7 || i == 8 || i == 9 || i == 10) {// Linha 3 Com Dominacao
 							linhasPrimeiraAba(33, i - 7);
 						}
 					}
-					if (i == 10 + dt || i == 11 + dt || i == 12 + dt) {// Linha
-																		// 4
+					if (i == 10 + dt || i == 11 + dt || i == 12 + dt) {// Linha 4
 						linhasPrimeiraAba(4, i - (10 + dt));
 					}
 				}
@@ -126,11 +105,7 @@ public class ThizeRT {
 			int escolha = 0;
 			for (Element row : rw) {
 				Elements img = row.getElementsByTag("img");
-				if (escolha == N && !img.get(i).attr("src").contains("?image=e_grayscale&v=1")) {// Escolha
-																									// =
-																									// N(0
-																									// ou
-																									// 1)
+				if (escolha == N && !img.get(i).attr("src").contains("?image=e_grayscale&v=1")) {// Escolha = N(0 ou 1)
 					if (i == (q + 1)) {
 						classeRuna(img.get(i).attr("src"), 2);
 					}
@@ -140,23 +115,19 @@ public class ThizeRT {
 						p++;
 						d++;// AumentarFor
 						dd++;
-					} else if (i == (dt + 14) || i == (dt + 15) || i == (dt + 16)) {// Linha
-																					// 1
+					} else if (i == (dt + 14) || i == (dt + 15) || i == (dt + 16)) {// Linha 1
 						linhasSegundaAba(1, i - (dt + 14));
 					}
 					if (p == 13) {
-						if (i == 17 || i == 18 || i == 19 || i == 20) {// Linha
-																		// 2D
+						if (i == 17 || i == 18 || i == 19 || i == 20) {// Linha 2D
 							linhasSegundaAba(22, i - 17);
 						}
 					} else {
-						if (i == (dt + 17) || i == (dt + 18) || i == (dt + 19)) {// Linha
-																					// 2
+						if (i == (dt + 17) || i == (dt + 18) || i == (dt + 19)) {// Linha 2
 							linhasSegundaAba(2, i - (dt + 17));
 						}
 					}
-					if (i == (dt + dd + 20) || i == (dt + dd + 21) || i == (dd + dt + 22)) {// Linha
-																							// 3
+					if (i == (dt + dd + 20) || i == (dt + dd + 21) || i == (dd + dt + 22)) {// Linha 3
 						linhasSegundaAba(3, i - (dd + dt + 20));
 					}
 				}
@@ -215,8 +186,8 @@ public class ThizeRT {
 			dcY -= 3;
 		}
 		robot.mouseMove((x + dcX + dpX), (y + dcY + dpY));
-		// robot.mousePress(InputEvent.BUTTON1_MASK);// Clicar
-		// robot.mouseRelease(InputEvent.BUTTON1_MASK);// Clicar
+		robot.mousePress(InputEvent.BUTTON1_MASK);// Clicar
+		robot.mouseRelease(InputEvent.BUTTON1_MASK);// Clicar
 	}
 
 	private static void linhasPrimeiraAba(int c, int a) throws InterruptedException {
@@ -256,51 +227,45 @@ public class ThizeRT {
 		clicar(x, y);
 	}
 
-	private void jsoup(String url, int a, int k, String palavra) {
+	private void jsoup(String url, int a, int k, String palavra) throws IOException {
 		Document web = null;
+		web = Jsoup.connect(url).get();
+		Elements clas = web.getElementsByTag("tbody");
+		Elements rw = null;
 		try {
-			web = Jsoup.connect(url).get();
-		} catch (IOException e) {
-			System.out.println("gg2");
-			e.printStackTrace();
-		}
-		try {
-			Elements clas = web.getElementsByTag("tbody");
-			Elements rw = null;
 			if (k == 0) {
 				rw = clas.get(7).select("tr");
 			} else {
 				rw = clas.get(8).select("tr");
 			}
-			int auxx = 0;
-			for (Element row : rw) {
-				Elements columns = row.getElementsByTag(palavra);
-				String aux = "";
-				if (a == 0) {
-					aux = columns.get(a).text().replace(",", "");
+		} catch (Exception e) {
+			Main.assignMouseRed();
+		}
+		int auxx = 0;
+		for (Element row : rw) {
+			Elements columns = row.getElementsByTag(palavra);
+			String aux = "";
+			if (a == 0) {
+				aux = columns.get(a).text().replace(",", "");
+			} else {
+				aux = columns.get(a).text().replace("%", "");
+			}
+			if (k == 0) {
+				if (auxx == 0) {
+					n1 = (int) Double.parseDouble(aux);
+					auxx++;
 				} else {
-					aux = columns.get(a).text().replace("%", "");
+					n2 = (int) Double.parseDouble(aux);
 				}
-				if (k == 0) {
-					if (auxx == 0) {
-						n1 = (int) Double.parseDouble(aux);
-						auxx++;
-					} else {
-						n2 = (int) Double.parseDouble(aux);
-					}
+			} else {
+				if (auxx == 0) {
+					n3 = (int) Double.parseDouble(aux);
+					auxx++;
 				} else {
-					if (auxx == 0) {
-						n3 = (int) Double.parseDouble(aux);
-						auxx++;
-					} else {
-						n4 = (int) Double.parseDouble(aux);
-					}
+					n4 = (int) Double.parseDouble(aux);
 				}
-
 			}
 
-		} catch (Exception e) {
-			System.out.println("teste2");
 		}
 	}
 
