@@ -53,30 +53,12 @@ public class Main extends javax.swing.JFrame {
 		setPreferredSize(new java.awt.Dimension(422, 478));
 		getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-		botaoCor.setBackground(new java.awt.Color(182, 154, 97));
+		botaoCor.setBackground(new Color(40, 40, 40));
 
 		tCriar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
 		tCriar.setForeground(new java.awt.Color(255, 255, 255));
 		tCriar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-		tCriar.setText("ASSIGN");
-		tCriar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-		tCriar.addMouseListener(new java.awt.event.MouseAdapter() {
-			public void mouseEntered(java.awt.event.MouseEvent evt) {
-				assignMouseEntered(evt);
-			}
-
-			public void mouseClicked(java.awt.event.MouseEvent evt) {
-				try {
-					assignMouseClicked(evt);
-				} catch (InterruptedException | IOException e) {
-					e.printStackTrace();
-				}
-			}
-
-			public void mouseExited(java.awt.event.MouseEvent evt) {
-				assignMouseExited(evt);
-			}
-		});
+		tCriar.setText("Pick a Lane");
 
 		javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(botaoCor);
 		botaoCor.setLayout(jPanel1Layout);
@@ -143,7 +125,7 @@ public class Main extends javax.swing.JFrame {
 		getContentPane().add(tThize, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 450, -1, 19));
 		tVer.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
 		tVer.setForeground(new java.awt.Color(153, 153, 153));
-		tVer.setText("v"+Double.toString(Index.versaoL));
+		tVer.setText("v" + Double.toString(Index.versaoL));
 		tVer.setBounds(250, 450, -1, 19);
 		tVer.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 		tVer.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -183,7 +165,12 @@ public class Main extends javax.swing.JFrame {
 		iconMID.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 		iconMID.addMouseListener(new java.awt.event.MouseAdapter() {
 			public void mouseClicked(java.awt.event.MouseEvent evt) {
-				iconMIDMouseClicked(evt);
+				try {
+					iconMIDMouseClicked(evt);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		});
 		getContentPane().add(iconMID, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 290, -1, -1));
@@ -195,7 +182,12 @@ public class Main extends javax.swing.JFrame {
 		iconJG.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 		iconJG.addMouseListener(new java.awt.event.MouseAdapter() {
 			public void mouseClicked(java.awt.event.MouseEvent evt) {
-				iconJGMouseClicked(evt);
+				try {
+					iconJGMouseClicked(evt);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		});
 		getContentPane().add(iconJG, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 340, -1, -1));
@@ -207,7 +199,12 @@ public class Main extends javax.swing.JFrame {
 		iconTOP.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 		iconTOP.addMouseListener(new java.awt.event.MouseAdapter() {
 			public void mouseClicked(java.awt.event.MouseEvent evt) {
-				iconTOPMouseClicked(evt);
+				try {
+					iconTOPMouseClicked(evt);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		});
 		getContentPane().add(iconTOP, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, -1, -1));
@@ -219,7 +216,12 @@ public class Main extends javax.swing.JFrame {
 		iconADC.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 		iconADC.addMouseListener(new java.awt.event.MouseAdapter() {
 			public void mouseClicked(java.awt.event.MouseEvent evt) {
-				iconADCMouseClicked(evt);
+				try {
+					iconADCMouseClicked(evt);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		});
 		getContentPane().add(iconADC, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 250, -1, -1));
@@ -231,7 +233,12 @@ public class Main extends javax.swing.JFrame {
 		iconSUPP.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 		iconSUPP.addMouseListener(new java.awt.event.MouseAdapter() {
 			public void mouseClicked(java.awt.event.MouseEvent evt) {
-				iconSUPPMouseClicked(evt);
+				try {
+					iconSUPPMouseClicked(evt);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		});
 		getContentPane().add(iconSUPP, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 340, -1, -1));
@@ -302,19 +309,30 @@ public class Main extends javax.swing.JFrame {
 		}
 	}
 
-	private void assignMouseEntered(java.awt.event.MouseEvent evt) {
+	public static void assignMouseColor() throws InterruptedException {
 		botaoCor.setBackground(new Color(161, 133, 77));
+		tCriar.setText("ASSIGN");
+		tCriar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+		tCriar.addMouseListener(new java.awt.event.MouseAdapter() {
+			public void mouseClicked(java.awt.event.MouseEvent evt) {
+				try {
+					assignMouseClicked(evt);
+				} catch (InterruptedException | IOException e) {
+					e.printStackTrace();
+				}
+			}
+		});
 	}
 
-	private void assignMouseExited(java.awt.event.MouseEvent evt) {
-		botaoCor.setBackground(new Color(182, 154, 97));
+	private static void assignMouseClicked(java.awt.event.MouseEvent evt) throws InterruptedException, IOException {// GEN-FIRST:event_jLabel2MouseClicked
+		botaoCor.setBackground(new Color(36, 36, 36));
+		tCriar.setText("LOADING...");
+		ThizeRT.chamarRuna((String) champ.getSelectedItem(), lane, (String)
+		stat.getSelectedItem());
 	}
 
-	private void assignMouseClicked(java.awt.event.MouseEvent evt) throws InterruptedException, IOException {// GEN-FIRST:event_jLabel2MouseClicked
-		ThizeRT.chamarRuna((String) champ.getSelectedItem(), lane, (String) stat.getSelectedItem());
-	}
-
-	private void iconTOPMouseClicked(java.awt.event.MouseEvent evt) {
+	private void iconTOPMouseClicked(java.awt.event.MouseEvent evt) throws InterruptedException {
+		assignMouseColor();
 		lane = "top";
 		iconTOP.setForeground(new Color(220, 170, 110));
 		iconJG.setForeground(new Color(250, 250, 250));
@@ -324,7 +342,8 @@ public class Main extends javax.swing.JFrame {
 
 	}
 
-	private void iconJGMouseClicked(java.awt.event.MouseEvent evt) {
+	private void iconJGMouseClicked(java.awt.event.MouseEvent evt) throws InterruptedException {
+		assignMouseColor();
 		lane = "jungle";
 		iconTOP.setForeground(new Color(250, 250, 250));
 		iconJG.setForeground(new Color(220, 170, 110));
@@ -334,7 +353,8 @@ public class Main extends javax.swing.JFrame {
 
 	}
 
-	private void iconMIDMouseClicked(java.awt.event.MouseEvent evt) {
+	private void iconMIDMouseClicked(java.awt.event.MouseEvent evt) throws InterruptedException {
+		assignMouseColor();
 		lane = "mid";
 		iconTOP.setForeground(new Color(250, 250, 250));
 		iconJG.setForeground(new Color(250, 250, 250));
@@ -344,7 +364,8 @@ public class Main extends javax.swing.JFrame {
 
 	}
 
-	private void iconADCMouseClicked(java.awt.event.MouseEvent evt) {
+	private void iconADCMouseClicked(java.awt.event.MouseEvent evt) throws InterruptedException {
+		assignMouseColor();
 		lane = "adc";
 		iconTOP.setForeground(new Color(250, 250, 250));
 		iconJG.setForeground(new Color(250, 250, 250));
@@ -354,7 +375,8 @@ public class Main extends javax.swing.JFrame {
 
 	}
 
-	private void iconSUPPMouseClicked(java.awt.event.MouseEvent evt) {
+	private void iconSUPPMouseClicked(java.awt.event.MouseEvent evt) throws InterruptedException {
+		assignMouseColor();
 		lane = "support";
 		iconTOP.setForeground(new Color(250, 250, 250));
 		iconJG.setForeground(new Color(250, 250, 250));
@@ -377,9 +399,9 @@ public class Main extends javax.swing.JFrame {
 	private void moverMouseDragged(java.awt.event.MouseEvent evt) {
 		int x = evt.getXOnScreen();
 		int y = evt.getYOnScreen();
-		Index.resX = (x-xMouse);
-		Index.resY= (y-yMouse);
-		this.setLocation(Index.resX,Index.resY);
+		Index.resX = (x - xMouse);
+		Index.resY = (y - yMouse);
+		this.setLocation(Index.resX, Index.resY);
 	}
 
 	private void moverMousePressed(java.awt.event.MouseEvent evt) {
@@ -426,7 +448,7 @@ public class Main extends javax.swing.JFrame {
 		}
 		java.awt.EventQueue.invokeLater(new Runnable() {
 			public void run() {
-				new Main(0,0).setVisible(true);
+				new Main(0, 0).setVisible(true);
 			}
 		});
 	}
@@ -444,7 +466,7 @@ public class Main extends javax.swing.JFrame {
 	private javax.swing.JLabel fundo;
 	private javax.swing.JLabel bMinimizar;
 	private javax.swing.JLabel bFechar;
-	private javax.swing.JLabel tCriar;
+	private static javax.swing.JLabel tCriar;
 	private javax.swing.JLabel tChamp;
 	private javax.swing.JLabel logo;
 	private javax.swing.JLabel tStat;
@@ -452,7 +474,7 @@ public class Main extends javax.swing.JFrame {
 	private javax.swing.JLabel tThize;
 	private javax.swing.JLabel tVer;
 	private javax.swing.JLabel tTrndd;
-	private javax.swing.JPanel botaoCor;
+	private static javax.swing.JPanel botaoCor;
 	// End of variables declaration//GEN-END:variables
 
 }
