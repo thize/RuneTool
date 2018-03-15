@@ -16,7 +16,7 @@ public class Index extends javax.swing.JFrame {
 	int xMouse = 0, yMouse = 0;
 	int x = 0, y = 0;
 	static int resX = 0, resY = 0;
-	static double versaoL = 1.3;
+	static double versaoL = 1.4;
 	private String versao = "Update !";
 
 	public Index(int resX, int resY) {
