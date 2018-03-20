@@ -3,6 +3,7 @@ package thz.cod;
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.logging.Level;
@@ -28,7 +29,9 @@ public class Main extends javax.swing.JFrame {
 
 	private void initComponents() {
 		botaoCor = new javax.swing.JPanel();
+		botaoCor2 = new javax.swing.JPanel();
 		tCriar = new javax.swing.JLabel();
+		tOpgg = new javax.swing.JLabel();
 		bVoltar = new javax.swing.JLabel();
 		champSelect = new javax.swing.JCheckBox();
 		tThize = new javax.swing.JLabel();
@@ -60,7 +63,14 @@ public class Main extends javax.swing.JFrame {
 		tCriar.setForeground(new java.awt.Color(255, 255, 255));
 		tCriar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 		tCriar.setText("Pick a Lane");
+		
+		botaoCor2.setBackground(new Color(40, 40, 40));
 
+		tOpgg.setFont(new java.awt.Font("Arial", 1, 10)); // NOI18N
+		tOpgg.setForeground(new java.awt.Color(255, 255, 255));
+		tOpgg.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+		tOpgg.setText("OP.GG");
+		
 		javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(botaoCor);
 		botaoCor.setLayout(jPanel1Layout);
 		jPanel1Layout.setHorizontalGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -69,6 +79,15 @@ public class Main extends javax.swing.JFrame {
 				.addComponent(tCriar, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE));
 
 		getContentPane().add(botaoCor, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 400, 110, 40));
+		
+		javax.swing.GroupLayout jPanel1Layout2 = new javax.swing.GroupLayout(botaoCor2);
+		botaoCor2.setLayout(jPanel1Layout2);
+		jPanel1Layout2.setHorizontalGroup(jPanel1Layout2.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+				.addComponent(tOpgg, javax.swing.GroupLayout.DEFAULT_SIZE, 55, Short.MAX_VALUE));
+		jPanel1Layout2.setVerticalGroup(jPanel1Layout2.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+				.addComponent(tOpgg, javax.swing.GroupLayout.DEFAULT_SIZE, 20, Short.MAX_VALUE));
+
+		getContentPane().add(botaoCor2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 410, 55, 20));
 
 		bVoltar.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
 		bVoltar.setForeground(new java.awt.Color(255, 255, 255));
@@ -275,9 +294,11 @@ public class Main extends javax.swing.JFrame {
 
 	static void assignReady() {
 		botaoCor.setBackground(new Color(161, 133, 77));
+		botaoCor2.setBackground(new Color(30,144,255));
 		tCriar.setText("ASSIGN");
 		Main.tCriar.paintImmediately(Main.tCriar.getVisibleRect());
 		tCriar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+		tOpgg.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 		if (ready == 0) {
 			tCriar.addMouseListener(new java.awt.event.MouseAdapter() {
 				public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -286,6 +307,19 @@ public class Main extends javax.swing.JFrame {
 					} catch (InterruptedException | IOException e) {
 						e.printStackTrace();
 					}
+				}
+			});
+			tOpgg.addMouseListener(new java.awt.event.MouseAdapter() {
+				public void mouseClicked(java.awt.event.MouseEvent evt) {
+					try {
+						opGGMouseClicked(evt);
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+
+				private void opGGMouseClicked(MouseEvent evt) throws IOException, URISyntaxException {
+					java.awt.Desktop.getDesktop().browse(new java.net.URI("https://op.gg/champion/" + (String) champ.getSelectedItem() + "/statistics/" + lane));			
 				}
 			});
 			ready++;
@@ -309,6 +343,7 @@ public class Main extends javax.swing.JFrame {
 		botaoCor.setBackground(new Color(180, 40, 40));
 		tCriar.setText("NOT FOUND");
 		tCriar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+		tOpgg.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 	}
 
 	private static void assignMouseClicked(java.awt.event.MouseEvent evt) throws InterruptedException, IOException {// GEN-FIRST:event_jLabel2MouseClicked
@@ -458,6 +493,7 @@ public class Main extends javax.swing.JFrame {
 	private javax.swing.JLabel bMinimizar;
 	private javax.swing.JLabel bFechar;
 	static javax.swing.JLabel tCriar;
+	static javax.swing.JLabel tOpgg;
 	private javax.swing.JLabel tChamp;
 	private javax.swing.JLabel logo;
 	private javax.swing.JLabel tStat;
@@ -466,6 +502,7 @@ public class Main extends javax.swing.JFrame {
 	private javax.swing.JLabel tVer;
 	private javax.swing.JLabel tTrndd;
 	static javax.swing.JPanel botaoCor;
+	static javax.swing.JPanel botaoCor2;
 	// End of variables declaration//GEN-END:variables
 
 }
