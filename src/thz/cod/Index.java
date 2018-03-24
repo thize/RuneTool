@@ -9,6 +9,9 @@ import java.net.MalformedURLException;
 import java.net.URISyntaxException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.net.URL;
+import java.awt.Image;
+import javax.imageio.ImageIO;
 
 public class Index extends javax.swing.JFrame {
 
@@ -16,10 +19,10 @@ public class Index extends javax.swing.JFrame {
 	int xMouse = 0, yMouse = 0;
 	int x = 0, y = 0;
 	static int resX = 0, resY = 0;
-	static double versaoL = 1.4;
+	static double versaoL = 1.6;
 	private String versao = "Update !";
 
-	public Index(int resX, int resY) {
+	public Index(int resX, int resY) throws IOException {
 		java.net.URL url = this.getClass().getResource("/thz/img/thz.png");
 		Image imagemTitulo = Toolkit.getDefaultToolkit().getImage(url);
 		this.setIconImage(imagemTitulo);
@@ -35,7 +38,8 @@ public class Index extends javax.swing.JFrame {
 
 	}
 
-	private void initComponents() {
+	private void initComponents() throws IOException {
+		
 		try {
 			ThizeRT.ver();
 		} catch (IOException e1) {
@@ -146,8 +150,10 @@ public class Index extends javax.swing.JFrame {
 
 		jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/thz/img/logo.png"))); // NOI18N
 		getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 180, -1, -1));
-
-		jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/thz/img/bg.png"))); // NOI18N
+		
+		URL url = new URL("https://raw.githubusercontent.com/thize/RuneTool/master/src/thz/img/bg.png");
+		Image imagem = ImageIO.read(url);
+		jLabel1.setIcon(new javax.swing.ImageIcon(imagem)); // NOI18N
 		getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
 		pack();
@@ -224,7 +230,12 @@ public class Index extends javax.swing.JFrame {
 		}
 		java.awt.EventQueue.invokeLater(new Runnable() {
 			public void run() {
-				new Index(0, 0).setVisible(true);
+				try {
+					new Index(0, 0).setVisible(true);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		});
 	}

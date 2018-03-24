@@ -24,7 +24,6 @@ public class Main extends javax.swing.JFrame {
 		if (Index.resX != 0 && Index.resY != 0) {
 			this.setLocation(Index.resX, Index.resY);
 		}
-
 	}
 
 	private void initComponents() {
@@ -95,7 +94,12 @@ public class Main extends javax.swing.JFrame {
 		bVoltar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 		bVoltar.addMouseListener(new java.awt.event.MouseAdapter() {
 			public void mouseClicked(java.awt.event.MouseEvent evt) {
-				voltarMouseClicked(evt);
+				try {
+					voltarMouseClicked(evt);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		});
 		getContentPane().add(bVoltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
@@ -445,7 +449,7 @@ public class Main extends javax.swing.JFrame {
 		}
 	}
 
-	private void voltarMouseClicked(java.awt.event.MouseEvent evt) {
+	private void voltarMouseClicked(java.awt.event.MouseEvent evt) throws IOException {
 		dispose();
 		Index nm = new Index(Index.resX, Index.resY);
 		nm.setVisible(true);
