@@ -24,6 +24,7 @@ public class Main extends javax.swing.JFrame {
 		if (Index.resX != 0 && Index.resY != 0) {
 			this.setLocation(Index.resX, Index.resY);
 		}
+
 	}
 
 	private void initComponents() {
@@ -94,12 +95,7 @@ public class Main extends javax.swing.JFrame {
 		bVoltar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 		bVoltar.addMouseListener(new java.awt.event.MouseAdapter() {
 			public void mouseClicked(java.awt.event.MouseEvent evt) {
-				try {
-					voltarMouseClicked(evt);
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+				voltarMouseClicked(evt);
 			}
 		});
 		getContentPane().add(bVoltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
@@ -149,7 +145,7 @@ public class Main extends javax.swing.JFrame {
 		getContentPane().add(tThize, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 450, -1, 19));
 		tVer.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
 		tVer.setForeground(new java.awt.Color(153, 153, 153));
-		tVer.setText("v1.7");
+		tVer.setText("v" + Double.toString(Index.versaoL));
 		tVer.setBounds(250, 450, -1, 19);
 		tVer.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 		tVer.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -449,7 +445,7 @@ public class Main extends javax.swing.JFrame {
 		}
 	}
 
-	private void voltarMouseClicked(java.awt.event.MouseEvent evt) throws IOException {
+	private void voltarMouseClicked(java.awt.event.MouseEvent evt) {
 		dispose();
 		Index nm = new Index(Index.resX, Index.resY);
 		nm.setVisible(true);

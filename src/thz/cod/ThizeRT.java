@@ -69,37 +69,38 @@ public class ThizeRT {
 					if (i == 0)
 						classeRuna(img.get(i).attr("src"), 1);
 					if (i == 0 && img.get(i).attr("src")
-							.equals("//opgg-static.akamaized.net/images/lol/perkStyle/8000.png")) {
+							.equals("//opgg-static.akamaized.net/images/lol/perkStyle/8400.png")/* Determina��o */) {
 						q++;
 						d++;// AumentarSegundoForPara2Runa
 						dt = 1;
+					}
+					if (i == 1 || i == 2 || i == 3) {// Linha 1
+						linhasPrimeiraAba(1, i - 1);
+					} else if (i == 4 || i == 5 || i == 6) {// Linha 2
+						linhasPrimeiraAba(2, i - 4);
+					}
+					if (q == 12) {
+						if (i == 7 || i == 8 || i == 9) {// Linha 3
+							linhasPrimeiraAba(3, i - 7);
+						}
 					} else {
-						if (q == 13) {
-							if (i == 1 || i == 2 || i == 3 || i == 4) {// Linha 11
-								linhasPrimeiraAba(11, i - 1);
-							}
-						} else {
-							if (i == 1 || i == 2 || i == 3) {// Linha 1
-								linhasPrimeiraAba(1, i - 1);
-							}
+						if (i == 7 || i == 8 || i == 9 || i == 10) {// Linha 3 Com Dominacao
+							linhasPrimeiraAba(33, i - 7);
 						}
-						if (i == (dt + 4) || i == (dt + 5) || i == (dt + 6)) {// Linha 2
-							linhasPrimeiraAba(2, i - (dt + 4));
-						} else if (i == (dt + 7) || i == (dt + 8) || i == (dt + 9)) {// Linha 3
-							linhasPrimeiraAba(3, i - (dt + 7));
-						} else if (i == (dt + 10) || i == (dt + 11) || i == (dt + 12)) {// Linha 4
-							linhasPrimeiraAba(4, i - (dt + 10));
-						}
+					}
+					if (i == 10 + dt || i == 11 + dt || i == 12 + dt) {// Linha 4
+						linhasPrimeiraAba(4, i - (10 + dt));
 					}
 				}
 				escolha++;
 			}
 		}
-
 	}
 
 	private static void segundaAbaRuna(int N, Elements rw, int d, int q) throws InterruptedException {
 		// SegundaAbaDasRunas
+		int p = 12;
+		int dd = 0;
 		for (int i = (q + 1); i < d; i++) {
 			int escolha = 0;
 			for (Element row : rw) {
@@ -107,12 +108,27 @@ public class ThizeRT {
 				if (escolha == N && !img.get(i).attr("src").contains("?image=e_grayscale&v=1")) {// Escolha = N(0 ou 1)
 					if (i == (q + 1)) {
 						classeRuna(img.get(i).attr("src"), 2);
+					}
+
+					if (i == (q + 1) && img.get(i).attr("src")
+							.equals("//opgg-static.akamaized.net/images/lol/perkStyle/8400.png")) {// Determinacao
+						p++;
+						d++;// AumentarFor
+						dd++;
 					} else if (i == (dt + 14) || i == (dt + 15) || i == (dt + 16)) {// Linha 1
 						linhasSegundaAba(1, i - (dt + 14));
-					} else if (i == (dt + 17) || i == (dt + 18) || i == (dt + 19)) {// Linha 2
-						linhasSegundaAba(2, i - (dt + 17));
-					} else if (i == (dt + 20) || i == (dt + 21) || i == (dt + 22)) {// Linha 3
-						linhasSegundaAba(3, i - (dt + 20));
+					}
+					if (p == 13) {
+						if (i == 17 || i == 18 || i == 19 || i == 20) {// Linha 2D
+							linhasSegundaAba(22, i - 17);
+						}
+					} else {
+						if (i == (dt + 17) || i == (dt + 18) || i == (dt + 19)) {// Linha 2
+							linhasSegundaAba(2, i - (dt + 17));
+						}
+					}
+					if (i == (dt + dd + 20) || i == (dt + dd + 21) || i == (dd + dt + 22)) {// Linha 3
+						linhasSegundaAba(3, i - (dd + dt + 20));
 					}
 				}
 				escolha++;
@@ -178,14 +194,14 @@ public class ThizeRT {
 		if (c == 1) {
 			x = 145 + (a * 66);
 			y = 250;
-		} else if (c == 11) {
-			x = 138 + (a * 51);
-			y = 250;
 		} else if (c == 2) {
 			x = 145 + (a * 66);
 			y = 350;
 		} else if (c == 3) {
 			x = 145 + (a * 66);
+			y = 440;
+		} else if (c == 33) {
+			x = 138 + (a * 51);
 			y = 440;
 		} else if (c == 4) {
 			x = 145 + (a * 66);
@@ -200,6 +216,9 @@ public class ThizeRT {
 			y = 226;
 		} else if (c == 2) {
 			x = 463 + (a * 66);
+			y = 304;
+		} else if (c == 22) {
+			x = 463 + (a * 51);
 			y = 304;
 		} else if (c == 3) {
 			x = 471 + (a * 66);
