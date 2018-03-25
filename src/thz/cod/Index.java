@@ -9,6 +9,8 @@ import java.net.MalformedURLException;
 import java.net.URISyntaxException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.net.URL;
+import javax.imageio.ImageIO;
 
 public class Index extends javax.swing.JFrame {
 
@@ -16,10 +18,8 @@ public class Index extends javax.swing.JFrame {
 	int xMouse = 0, yMouse = 0;
 	int x = 0, y = 0;
 	static int resX = 0, resY = 0;
-	static double versaoL = 1.4;
-	private String versao = "Update !";
 
-	public Index(int resX, int resY) {
+	public Index(int resX, int resY) throws IOException {
 		java.net.URL url = this.getClass().getResource("/thz/img/thz.png");
 		Image imagemTitulo = Toolkit.getDefaultToolkit().getImage(url);
 		this.setIconImage(imagemTitulo);
@@ -35,20 +35,11 @@ public class Index extends javax.swing.JFrame {
 
 	}
 
-	private void initComponents() {
-		try {
-			ThizeRT.ver();
-		} catch (IOException e1) {
-			e1.printStackTrace();
-		}
-		if (ThizeRT.versaoG > versaoL) {
-			versao = "Out of date (Click here to Download new Version)";
-		}
+	private void initComponents() throws IOException {
 		mover = new javax.swing.JLabel();
 		jPanel1 = new javax.swing.JPanel();
 		jLabel2 = new javax.swing.JLabel();
 		jLabel5 = new javax.swing.JLabel();
-		att = new javax.swing.JLabel();
 		jLabel4 = new javax.swing.JLabel();
 		jLabel3 = new javax.swing.JLabel();
 		jLabel1 = new javax.swing.JLabel();
@@ -103,23 +94,6 @@ public class Index extends javax.swing.JFrame {
 		});
 		getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 380, -1, -1));
 		
-		if (versao.equals("Update !")) {
-			att.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
-			att.setForeground(new java.awt.Color(0, 200, 0));
-			att.setText(versao);
-			getContentPane().add(att, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 400, -1, -1));
-		} else {
-			att.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
-			att.setForeground(new java.awt.Color(255, 0, 0));
-			att.setText(versao);
-			att.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-			att.addMouseListener(new java.awt.event.MouseAdapter() {
-				public void mouseClicked(java.awt.event.MouseEvent evt) {
-					attMouseClicked(evt);
-				}
-			});
-			getContentPane().add(att, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 400, -1, -1));
-		}
 
 		jLabel4.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
 		jLabel4.setForeground(new java.awt.Color(255, 255, 255));
@@ -146,8 +120,10 @@ public class Index extends javax.swing.JFrame {
 
 		jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/thz/img/logo.png"))); // NOI18N
 		getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 180, -1, -1));
-
-		jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/thz/img/bg.png"))); // NOI18N
+		
+		URL url = new URL("https://raw.githubusercontent.com/thize/RuneToolFiles/master/bg.png");
+		Image imagem = ImageIO.read(url);
+		jLabel1.setIcon(new javax.swing.ImageIcon(imagem)); // NOI18N
 		getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
 		pack();
@@ -194,15 +170,6 @@ public class Index extends javax.swing.JFrame {
 		}
 	}
 
-	private void attMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_jLabel5MouseClicked
-		try {
-			java.awt.Desktop.getDesktop().browse(new java.net.URI("https://runetool.github.io/"));
-		} catch (URISyntaxException ex) {
-			Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-		} catch (IOException ex) {
-			Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-		}
-	}
 
 	public static void main(String args[]) {
 
@@ -224,7 +191,12 @@ public class Index extends javax.swing.JFrame {
 		}
 		java.awt.EventQueue.invokeLater(new Runnable() {
 			public void run() {
-				new Index(0, 0).setVisible(true);
+				try {
+					new Index(0, 0).setVisible(true);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		});
 	}
@@ -235,7 +207,6 @@ public class Index extends javax.swing.JFrame {
 	private javax.swing.JLabel jLabel3;
 	private javax.swing.JLabel jLabel4;
 	private javax.swing.JLabel jLabel5;
-	private javax.swing.JLabel att;
 	private javax.swing.JPanel jPanel1;
 	private javax.swing.JLabel mover;
 	// End of variables declaration//GEN-END:variables
