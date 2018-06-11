@@ -4,12 +4,12 @@
 
 ### N E W
 ---
-- [x] Auto Update
+- [x] Multi Language UI
 
 
 | Version        | Download |
 | ------------- | -----:|
-| League Rune Tool v2.0      | [![GitHub issues](https://img.shields.io/badge/Download--feb62b.svg?style=flat-square)](https://runetool.github.io/)   
+| League Rune Tool v2.1      | [![GitHub issues](https://img.shields.io/badge/Download--feb62b.svg?style=flat-square)](https://runetool.github.io/)   
 
 ![scr](https://i.imgur.com/kj22p28.png)
 ![scr](https://i.imgur.com/jFjabJM.png)
@@ -44,7 +44,7 @@ I can't give you any kind of update now or anytime in the immediate future, but 
 - [x] Full New Material Design
 - [x] Champion Win Rate Stat
 - [x] Champion Pick Rate Stat
-- [ ] Multi Language UI
+- [x] Multi Language UI
 
 
 
