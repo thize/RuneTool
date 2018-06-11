@@ -9,7 +9,7 @@
 
 | Version        | Download |
 | ------------- | -----:|
-| League Rune Tool v1.7      | [![GitHub issues](https://img.shields.io/badge/Download--feb62b.svg?style=flat-square)](https://runetool.github.io/)   
+| League Rune Tool v2.0      | [![GitHub issues](https://img.shields.io/badge/Download--feb62b.svg?style=flat-square)](https://runetool.github.io/)   
 
 ![scr](https://i.imgur.com/kj22p28.png)
 ![scr](https://i.imgur.com/jFjabJM.png)
