@@ -1,7 +1,6 @@
 package thz.cod;
 
 import java.awt.AWTException;
-import java.awt.Color;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.io.IOException;
@@ -23,7 +22,6 @@ public class Index extends javax.swing.JFrame {
 		java.net.URL url = this.getClass().getResource("/thz/img/thz.png");
 		Image imagemTitulo = Toolkit.getDefaultToolkit().getImage(url);
 		this.setIconImage(imagemTitulo);
-		verificarVersao();
 		initComponents();
 		setLocationRelativeTo(null);
 		if (resX != 0 && resY != 0) {
@@ -31,15 +29,12 @@ public class Index extends javax.swing.JFrame {
 		}
 	}
 
-	private void verificarVersao() {
-
-	}
-
 	private void initComponents() throws IOException {
 		mover = new javax.swing.JLabel();
 		jPanel1 = new javax.swing.JPanel();
 		jLabel2 = new javax.swing.JLabel();
 		jLabel5 = new javax.swing.JLabel();
+		update = new javax.swing.JLabel();
 		jLabel4 = new javax.swing.JLabel();
 		jLabel3 = new javax.swing.JLabel();
 		jLabel1 = new javax.swing.JLabel();
@@ -48,12 +43,12 @@ public class Index extends javax.swing.JFrame {
 		setUndecorated(true);
 		getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-		jPanel1.setBackground(new java.awt.Color(28, 27, 40));
-		jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(6, 111, 192), 3));
+		jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+		jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(200, 200, 200), 3));
 		jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
 		jLabel2.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
-		jLabel2.setForeground(new java.awt.Color(204, 204, 204));
+		jLabel2.setForeground(new java.awt.Color(20, 20, 20));
 		jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 		jLabel2.setText("START");
 		jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -63,14 +58,6 @@ public class Index extends javax.swing.JFrame {
 				} catch (MalformedURLException | AWTException e) {
 					e.printStackTrace();
 				}
-			}
-
-			public void mouseEntered(java.awt.event.MouseEvent evt) {
-				jLabel2MouseEntered(evt);
-			}
-
-			public void mouseExited(java.awt.event.MouseEvent evt) {
-				jLabel2MouseExited(evt);
 			}
 		});
 
@@ -84,7 +71,7 @@ public class Index extends javax.swing.JFrame {
 		getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 330, 130, 40));
 
 		jLabel5.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
-		jLabel5.setForeground(new java.awt.Color(204, 204, 204));
+		jLabel5.setForeground(new java.awt.Color(255, 255, 255));
 		jLabel5.setText("How to Use?");
 		jLabel5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 		jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -93,6 +80,17 @@ public class Index extends javax.swing.JFrame {
 			}
 		});
 		getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 380, -1, -1));
+		
+		update.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
+		update.setForeground(new java.awt.Color(255, 255, 255));
+		update.setText("Search Update");
+		update.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+		update.addMouseListener(new java.awt.event.MouseAdapter() {
+			public void mouseClicked(java.awt.event.MouseEvent evt) {
+				update(evt);
+			}
+		});
+		getContentPane().add(update, new org.netbeans.lib.awtextra.AbsoluteConstraints(175, 400, -1, -1));
 		
 
 		jLabel4.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
@@ -121,20 +119,12 @@ public class Index extends javax.swing.JFrame {
 		jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/thz/img/logo.png"))); // NOI18N
 		getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 180, -1, -1));
 		
-		URL url = new URL("https://raw.githubusercontent.com/thize/RuneToolFiles/master/bg.png");
+		URL url = new URL("https://raw.githubusercontent.com/thize/RuneToolFiles/master/bg3.png");
 		Image imagem = ImageIO.read(url);
-		jLabel1.setIcon(new javax.swing.ImageIcon(imagem)); // NOI18N
+		//jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/thz/img/bg.png"))); // 
+		jLabel1.setIcon(new javax.swing.ImageIcon(imagem)); // NOI18N NOI18N
 		getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-
 		pack();
-	}
-
-	private void jLabel2MouseEntered(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_jLabel2MouseEntered
-		jPanel1.setBackground(new Color(37, 36, 54));
-	}
-
-	private void jLabel2MouseExited(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_jLabel2MouseExited
-		jPanel1.setBackground(new Color(28, 27, 40));
 	}
 
 	private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_jLabel4MouseClicked
@@ -169,7 +159,16 @@ public class Index extends javax.swing.JFrame {
 			Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
 		}
 	}
-
+	
+	private void update(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_jLabel5MouseClicked
+		try {
+			Runtime.getRuntime().exec("java -jar Update.jar");
+			dispose();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 
 	public static void main(String args[]) {
 
@@ -207,6 +206,7 @@ public class Index extends javax.swing.JFrame {
 	private javax.swing.JLabel jLabel3;
 	private javax.swing.JLabel jLabel4;
 	private javax.swing.JLabel jLabel5;
+	private javax.swing.JLabel update;
 	private javax.swing.JPanel jPanel1;
 	private javax.swing.JLabel mover;
 	// End of variables declaration//GEN-END:variables

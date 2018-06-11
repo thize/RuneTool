@@ -17,18 +17,16 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 public class ThizeRT {
-	private static int dpY = 10, dcY, dcX, dpX = 44, d, q, dt = 0, posi, aux;
-	private static int x, y, n1, n2, n3, n4;
-	public static double versaoG;
+	public static int dpY = 10, dcY, dcX, dpX = 44, d, q, dt = 0, posi, aux;
+	public static int x, y, n1, n2, n3, n4;
+	public static double versaoG, proporcao;;
 	public static boolean selecao = true;
 	private static String stat = "", champ = "", lane = "";
 	static Robot robot;
+	static Rectangle ret = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
 
 	public static void main(String[] args) throws AWTException, InterruptedException, IOException {
 		robot = new Robot();
-		Rectangle d = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
-		dpX = (d.width - 1280) / 2;
-		dpY = (d.height - 720) / 2;
 		Index.main(args);
 	}
 
@@ -50,6 +48,12 @@ public class ThizeRT {
 		clicar(410, 50);// Salvar
 	}
 
+	static Boolean precisao = false;
+	static Boolean dominacao = false;
+	static Boolean feiticaria = false;
+	static Boolean determinacao = false;
+	static Boolean inspiracao = false;
+
 	private static void primeiraAbaRuna(int N, Elements rw) throws InterruptedException {
 		// PrimeiraAbaDasRunas
 		dt = 0;
@@ -62,26 +66,80 @@ public class ThizeRT {
 					if (i == 0)
 						classeRuna(img.get(i).attr("src"), 1);
 					if (i == 0 && img.get(i).attr("src")
-							.equals("//opgg-static.akamaized.net/images/lol/perkStyle/8000.png")) {
-						q++;
-						d++;// AumentarSegundoForPara2Runa
-						dt = 1;
-					} else {
-						if (q == 13) {
-							if (i == 1 || i == 2 || i == 3 || i == 4) {// Linha 11
-								linhasPrimeiraAba(11, i - 1);
-							}
-						} else {
-							if (i == 1 || i == 2 || i == 3) {// Linha 1
-								linhasPrimeiraAba(1, i - 1);
-							}
+							.equals("//opgg-static.akamaized.net/images/lol/perkStyle/8000.png") || precisao) {
+						if (!precisao) {
+							q++;
+							d++;// AumentarSegundoForPara2Runa
+							dt++;
 						}
-						if (i == (dt + 4) || i == (dt + 5) || i == (dt + 6)) {// Linha 2
-							linhasPrimeiraAba(2, i - (dt + 4));
-						} else if (i == (dt + 7) || i == (dt + 8) || i == (dt + 9)) {// Linha 3
-							linhasPrimeiraAba(3, i - (dt + 7));
-						} else if (i == (dt + 10) || i == (dt + 11) || i == (dt + 12)) {// Linha 4
-							linhasPrimeiraAba(4, i - (dt + 10));
+						precisao = true;
+						if (i == 1 || i == 2 || i == 3 || i == 4) {// Linha 11
+							linhasPrimeiraAba(11, i - 1);
+						} else if (i == 5 || i == 6 || i == 7) {// Linha 2
+							linhasPrimeiraAba(2, i - 5);
+						} else if (i == 8 || i == 9 || i == 10) {// Linha 3
+							linhasPrimeiraAba(3, i - 8);
+						} else if (i == 11 || i == 12 || i == 13) {// Linha 11
+							linhasPrimeiraAba(4, i - 11);
+						}
+					} else if (i == 0 && img.get(i).attr("src")
+							.equals("//opgg-static.akamaized.net/images/lol/perkStyle/8100.png") || dominacao) {
+						if (!dominacao) {
+							q += 2;
+							d++;// AumentarSegundoForPara2Runa
+							dt += 2;
+						}
+						dominacao = true;
+						if (i == 1 || i == 2 || i == 3 || i == 4) {// Linha 11
+							linhasPrimeiraAba(11, i - 1);
+						} else if (i == 5 || i == 6 || i == 7) {// Linha 2
+							linhasPrimeiraAba(2, i - 5);
+						} else if (i == 8 || i == 9 || i == 10) {// Linha 3
+							linhasPrimeiraAba(3, i - 8);
+						} else if (i == 11 || i == 12 || i == 13 || i == 14) {// Linha 11
+							linhasPrimeiraAba(44, i - 11);
+						}
+					} else if (i == 0
+							&& img.get(i).attr("src")
+									.equals("//opgg-static.akamaized.net/images/lol/perkStyle/8200.png")
+							|| feiticaria) {
+						feiticaria = true;
+						if (i == 1 || i == 2 || i == 3) {// Linha 11
+							linhasPrimeiraAba(1, i - 1);
+						} else if (i == 4 || i == 5 || i == 6) {// Linha 2
+							linhasPrimeiraAba(2, i - 4);
+						} else if (i == 7 || i == 8 || i == 9) {// Linha 3
+							linhasPrimeiraAba(3, i - 7);
+						} else if (i == 10 || i == 11 || i == 12) {// Linha 11
+							linhasPrimeiraAba(4, i - 10);
+						}
+					} else if (i == 0
+							&& img.get(i).attr("src")
+									.equals("//opgg-static.akamaized.net/images/lol/perkStyle/8400.png")
+							|| determinacao) {
+						determinacao = true;
+						if (i == 1 || i == 2 || i == 3) {// Linha 11
+							linhasPrimeiraAba(1, i - 1);
+						} else if (i == 4 || i == 5 || i == 6) {// Linha 2
+							linhasPrimeiraAba(2, i - 4);
+						} else if (i == 7 || i == 8 || i == 9) {// Linha 3
+							linhasPrimeiraAba(3, i - 7);
+						} else if (i == 10 || i == 11 || i == 12) {// Linha 4
+							linhasPrimeiraAba(4, i - 10);
+						}
+					} else if (i == 0
+							&& img.get(i).attr("src")
+									.equals("//opgg-static.akamaized.net/images/lol/perkStyle/8300.png")
+							|| inspiracao) {
+						inspiracao = true;
+						if (i == 1 || i == 2 || i == 3) {// Linha 11
+							linhasPrimeiraAba(1, i - 1);
+						} else if (i == 4 || i == 5 || i == 6) {// Linha 2
+							linhasPrimeiraAba(2, i - 4);
+						} else if (i == 7 || i == 8 || i == 9) {// Linha 3
+							linhasPrimeiraAba(3, i - 7);
+						} else if (i == 10 || i == 11 || i == 12) {// Linha 4
+							linhasPrimeiraAba(4, i - 10);
 						}
 					}
 				}
@@ -93,10 +151,15 @@ public class ThizeRT {
 
 	private static void segundaAbaRuna(int N, Elements rw, int d, int q) throws InterruptedException {
 		// SegundaAbaDasRunas
+		N = 0;
+		boolean dominacao = false;
 		for (int i = (q + 1); i < d; i++) {
 			int escolha = 0;
 			for (Element row : rw) {
 				Elements img = row.getElementsByTag("img");
+				if (img.get(i).attr("src").equals("//opgg-static.akamaized.net/images/lol/perkStyle/8100.png")) {
+					dominacao = true;
+				}
 				if (escolha == N && !img.get(i).attr("src").contains("?image=e_grayscale&v=1")) {// Escolha = N(0 ou 1)
 					if (i == (q + 1)) {
 						classeRuna(img.get(i).attr("src"), 2);
@@ -104,12 +167,17 @@ public class ThizeRT {
 						linhasSegundaAba(1, i - (dt + 14));
 					} else if (i == (dt + 17) || i == (dt + 18) || i == (dt + 19)) {// Linha 2
 						linhasSegundaAba(2, i - (dt + 17));
-					} else if (i == (dt + 20) || i == (dt + 21) || i == (dt + 22)) {// Linha 3
+					} else if (dominacao) {
+						if (i == (dt + 20) || i == (dt + 21) || i == (dt + 22) || i == (dt + 23)) {
+							linhasSegundaAba(33, i - (dt + 20));
+						}
+					} else if (i == (dt + 20) || i == (dt + 21) || i == (dt + 22)) {
 						linhasSegundaAba(3, i - (dt + 20));
 					}
 				}
 				escolha++;
 			}
+
 		}
 	}
 
@@ -152,7 +220,9 @@ public class ThizeRT {
 
 	}
 
-	private static void clicar(int x, int y) throws InterruptedException {
+	private static void clicar(double k, double l) throws InterruptedException {
+		Double x = k;
+		Double y = l;
 		Thread.sleep(250);
 		// Distancia Cliente = dc
 		// Distancia PC = dp
@@ -162,7 +232,9 @@ public class ThizeRT {
 			dcX = 109;
 			dcY -= 3;
 		}
-		robot.mouseMove((x + dcX + dpX), (y + dcY + dpY));
+		x = ((x + dcX)/proporcao)+dpX;
+		y = ((y + dcY)/proporcao)+dpY;
+		robot.mouseMove(x.intValue(), y.intValue());
 		robot.mousePress(InputEvent.BUTTON1_MASK);// Clicar
 		robot.mouseRelease(InputEvent.BUTTON1_MASK);// Clicar
 	}
@@ -177,11 +249,20 @@ public class ThizeRT {
 		} else if (c == 2) {
 			x = 145 + (a * 66);
 			y = 350;
+		} else if (c == 22) {
+			x = 138 + (a * 51);
+			y = 350;
 		} else if (c == 3) {
 			x = 145 + (a * 66);
 			y = 440;
+		} else if (c == 33) {
+			x = 138 + (a * 51);
+			y = 440;
 		} else if (c == 4) {
 			x = 145 + (a * 66);
+			y = 525;
+		} else if (c == 44) {
+			x = 138 + (a * 51);
 			y = 525;
 		}
 		clicar(x, y);
@@ -191,11 +272,20 @@ public class ThizeRT {
 		if (c == 1) {
 			x = 471 + (a * 66);
 			y = 226;
+		} else if (c == 11) {
+			x = 464 + (a * 51);
+			y = 226;
 		} else if (c == 2) {
 			x = 463 + (a * 66);
 			y = 304;
+		} else if (c == 22) {
+			x = 464 + (a * 51);
+			y = 304;
 		} else if (c == 3) {
 			x = 471 + (a * 66);
+			y = 382;
+		} else if (c == 33) {
+			x = 464 + (a * 51);
 			y = 382;
 		}
 		clicar(x, y);
@@ -269,7 +359,6 @@ public class ThizeRT {
 		String text = champ + " | " + lane + " | " + stat;
 		StringSelection selection = new StringSelection(text);
 		clipboard.setContents(selection, null);
-
 		try {
 			robot.keyPress(KeyEvent.VK_CONTROL);
 			robot.keyPress(KeyEvent.VK_V);
@@ -280,10 +369,28 @@ public class ThizeRT {
 		}
 	}
 
-	static void chamarRuna(String champp, String lanee, String statt) throws InterruptedException, IOException {
+	static void chamarRuna(String champp, String lanee, String statt, String resoo)
+			throws InterruptedException, IOException {
 		champ = champp;
 		stat = statt;
 		lane = lanee;
+		if (resoo.equals("1280x720")) {
+			dpX = (ret.width - 1280) / 2;
+			dpY = (ret.height - 720) / 2;
+			proporcao = 1;
+		} else if (resoo.equals("1024x576")) {
+			dpX = (ret.width - 1024) / 2;
+			dpY = (ret.height - 576) / 2;
+			proporcao = 1.25;
+		} else if (resoo.equals("1600x900")) {
+			dpX = (ret.width - 1600) / 2;
+			dpY = (ret.height - 900) / 2;
+			proporcao = 0.8;
+		} else if (resoo.equals("1920x1080")) {
+			dpX = (ret.width - 1920) / 2;
+			dpY = (ret.height - 1080) / 2;
+			proporcao = 0.66666666666666667;
+		}
 		String url = "https://br.op.gg/champion/" + champp + "/statistics/" + lanee;
 		ThizeRT scrapper = new ThizeRT();
 		if (statt.equals("Most Frequent")) {

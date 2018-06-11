@@ -45,6 +45,8 @@ public class Main extends javax.swing.JFrame {
 		iconSUPP = new javax.swing.JLabel();
 		champ = new javax.swing.JComboBox<>();
 		stat = new javax.swing.JComboBox<>();
+		reso = new javax.swing.JComboBox<>();
+		tReso = new javax.swing.JLabel();
 		tStat = new javax.swing.JLabel();
 		tChamp = new javax.swing.JLabel();
 		logo = new javax.swing.JLabel();
@@ -62,14 +64,14 @@ public class Main extends javax.swing.JFrame {
 		tCriar.setForeground(new java.awt.Color(255, 255, 255));
 		tCriar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 		tCriar.setText("Pick a Lane");
-		
+
 		botaoCor2.setBackground(new Color(40, 40, 40));
 
 		tOpgg.setFont(new java.awt.Font("Arial", 1, 10)); // NOI18N
 		tOpgg.setForeground(new java.awt.Color(255, 255, 255));
 		tOpgg.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 		tOpgg.setText("OP.GG");
-		
+
 		javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(botaoCor);
 		botaoCor.setLayout(jPanel1Layout);
 		jPanel1Layout.setHorizontalGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -78,7 +80,7 @@ public class Main extends javax.swing.JFrame {
 				.addComponent(tCriar, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE));
 
 		getContentPane().add(botaoCor, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 400, 110, 40));
-		
+
 		javax.swing.GroupLayout jPanel1Layout2 = new javax.swing.GroupLayout(botaoCor2);
 		botaoCor2.setLayout(jPanel1Layout2);
 		jPanel1Layout2.setHorizontalGroup(jPanel1Layout2.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -86,7 +88,7 @@ public class Main extends javax.swing.JFrame {
 		jPanel1Layout2.setVerticalGroup(jPanel1Layout2.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
 				.addComponent(tOpgg, javax.swing.GroupLayout.DEFAULT_SIZE, 20, Short.MAX_VALUE));
 
-		getContentPane().add(botaoCor2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 410, 55, 20));
+		getContentPane().add(botaoCor2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 448, 55, 20));
 
 		bVoltar.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
 		bVoltar.setForeground(new java.awt.Color(255, 255, 255));
@@ -149,7 +151,7 @@ public class Main extends javax.swing.JFrame {
 		getContentPane().add(tThize, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 450, -1, 19));
 		tVer.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
 		tVer.setForeground(new java.awt.Color(153, 153, 153));
-		tVer.setText("v1.7");
+		tVer.setText("v2.0");
 		tVer.setBounds(250, 450, -1, 19);
 		tVer.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 		tVer.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -252,19 +254,31 @@ public class Main extends javax.swing.JFrame {
 				"Katarina", "Kayle", "Kayn", "Kennen", "Kha'Zix", "Kindred", "Kled", "Kog'Maw", "LeBlanc", "Lee Sin",
 				"Leona", "Lissandra", "Lucian", "Lulu", "Lux", "Malphite", "Malzahar", "Maokai", "Master Yi",
 				"Miss Fortune", "Mordekaiser", "Morgana", "Nami", "Nasus", "Nautilus", "Nidalee", "Nocturne", "Nunu",
-				"Olaf", "Orianna", "Ornn", "Pantheon", "Poppy", "Quinn", "Rakan", "Rammus", "Rek'Sai", "Renekton",
-				"Rengar", "Riven", "Rumble", "Ryze", "Sejuani", "Shaco", "Shen", "Shyvana", "Singed", "Sion", "Sivir",
-				"Skarner", "Sona", "Soraka", "Swain", "Syndra", "Tahm Kench", "Taliyah", "Talon", "Taric", "Teemo",
-				"Thresh", "Tristana", "Trundle", "Tryndamere", "Twisted Fate", "Twitch", "Udyr", "Urgot", "Varus",
-				"Vayne", "Veigar", "Vel'Koz", "Vi", "Viktor", "Vladimir", "Volibear", "Warwick", "Wukong", "Xayah",
-				"Xerath", "Xin Zhao", "Yasuo", "Yorick", "Zac", "Zed", "Ziggs", "Zilean", "Zoe", "Zyra" }));
+				"Olaf", "Orianna", "Ornn", "Pantheon", "Poppy", "Pyke", "Quinn", "Rakan", "Rammus", "Rek'Sai",
+				"Renekton", "Rengar", "Riven", "Rumble", "Ryze", "Sejuani", "Shaco", "Shen", "Shyvana", "Singed",
+				"Sion", "Sivir", "Skarner", "Sona", "Soraka", "Swain", "Syndra", "Tahm Kench", "Taliyah", "Talon",
+				"Taric", "Teemo", "Thresh", "Tristana", "Trundle", "Tryndamere", "Twisted Fate", "Twitch", "Udyr",
+				"Urgot", "Varus", "Vayne", "Veigar", "Vel'Koz", "Vi", "Viktor", "Vladimir", "Volibear", "Warwick",
+				"Wukong", "Xayah", "Xerath", "Xin Zhao", "Yasuo", "Yorick", "Zac", "Zed", "Ziggs", "Zilean", "Zoe",
+				"Zyra" }));
 		champ.setBorder(null);
 		getContentPane().add(champ, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 200, 110, 30));
 
 		stat.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-		stat.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Highest Win", "Most Frequent" }));
+		stat.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Most Frequent", "Highest Win" }));
 		stat.setBorder(null);
 		getContentPane().add(stat, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 200, 110, 30));
+
+		tReso.setFont(new java.awt.Font("Arial", 1, 10)); // NOI18N
+		tReso.setForeground(new java.awt.Color(255, 255, 255));
+		tReso.setText("Client Resolution:");
+		getContentPane().add(tReso, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 385, -1, -1));
+
+		reso.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+		reso.setModel(new javax.swing.DefaultComboBoxModel<>(
+				new String[] { "1280x720", "1024x576", "1600x900", "1920x1080" }));
+		reso.setBorder(null);
+		getContentPane().add(reso, new org.netbeans.lib.awtextra.AbsoluteConstraints(175, 400, 90, 30));
 
 		tStat.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
 		tStat.setForeground(new java.awt.Color(255, 255, 255));
@@ -298,7 +312,7 @@ public class Main extends javax.swing.JFrame {
 
 	static void assignReady() {
 		botaoCor.setBackground(new Color(161, 133, 77));
-		botaoCor2.setBackground(new Color(30,144,255));
+		botaoCor2.setBackground(new Color(30, 144, 255));
 		tCriar.setText("ASSIGN");
 		Main.tCriar.paintImmediately(Main.tCriar.getVisibleRect());
 		tCriar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -323,7 +337,8 @@ public class Main extends javax.swing.JFrame {
 				}
 
 				private void opGGMouseClicked(MouseEvent evt) throws IOException, URISyntaxException {
-					java.awt.Desktop.getDesktop().browse(new java.net.URI("https://op.gg/champion/" + (String) champ.getSelectedItem() + "/statistics/" + lane));			
+					java.awt.Desktop.getDesktop().browse(new java.net.URI(
+							"https://op.gg/champion/" + (String) champ.getSelectedItem() + "/statistics/" + lane));
 				}
 			});
 			ready++;
@@ -351,8 +366,17 @@ public class Main extends javax.swing.JFrame {
 	}
 
 	private static void assignMouseClicked(java.awt.event.MouseEvent evt) throws InterruptedException, IOException {// GEN-FIRST:event_jLabel2MouseClicked
+		ThizeRT.q = 12;
+		ThizeRT.d = 23;// AumentarSegundoForPara2Runa
+		ThizeRT.dt = 0;
+		ThizeRT.precisao = false;
+		ThizeRT.dominacao = false;
+		ThizeRT.feiticaria = false;
+		ThizeRT.determinacao = false;
+		ThizeRT.inspiracao = false;
 		loading();
-		ThizeRT.chamarRuna((String) champ.getSelectedItem(), lane, (String) stat.getSelectedItem());
+		ThizeRT.chamarRuna((String) champ.getSelectedItem(), lane, (String) stat.getSelectedItem(),
+				(String) reso.getSelectedItem());
 	}
 
 	private static void loading() {
@@ -492,6 +516,7 @@ public class Main extends javax.swing.JFrame {
 	public static javax.swing.JCheckBox champSelect;
 	public static javax.swing.JComboBox<String> champ;
 	public static javax.swing.JComboBox<String> stat;
+	public static javax.swing.JComboBox<String> reso;
 	private javax.swing.JLabel mover;
 	private javax.swing.JLabel fundo;
 	private javax.swing.JLabel bMinimizar;
@@ -501,6 +526,7 @@ public class Main extends javax.swing.JFrame {
 	private javax.swing.JLabel tChamp;
 	private javax.swing.JLabel logo;
 	private javax.swing.JLabel tStat;
+	private javax.swing.JLabel tReso;
 	private javax.swing.JLabel bVoltar;
 	private javax.swing.JLabel tThize;
 	private javax.swing.JLabel tVer;
