@@ -9,6 +9,8 @@ import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
 
 import org.jsoup.Jsoup;
@@ -18,16 +20,87 @@ import org.jsoup.select.Elements;
 
 public class ThizeRT {
 	public static int dpY = 10, dcY, dcX, dpX = 44, d, q, dt = 0, posi, aux;
-	public static int x, y, n1, n2, n3, n4;
+	public static int x, y, n1, n2, n3, n4, idiomaSelecionado = 0;
 	public static double versaoG, proporcao;;
 	public static boolean selecao = true;
-	private static String stat = "", champ = "", lane = "";
+	public static String stat = "", champ = "", lane = "", linha;
 	static Robot robot;
 	static Rectangle ret = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
+	static String VERSAO = "v2.1";
 
 	public static void main(String[] args) throws AWTException, InterruptedException, IOException {
 		robot = new Robot();
+		br = new BufferedReader(new FileReader("language.txt"));
+		linha = br.readLine();
+		if (linha.equals("PT_BR")) {
+			mudarIdioma(1);
+		}
 		Index.main(args);
+	}
+
+	static String tComoUsar = "How to Use?";
+	static String tProcurarUpdate = "Search Update";
+	static String tAbrir = "START";
+	static String tChampSelect = "In Champion Select";
+	static String tClienteResolucao = "Client Resolution:";
+	static String tLane = "Pick a Lane";
+	static String tStat = "Stat:";
+	static String tChampion = "Champion:";
+	static String tAtribuir = "ASSIGN";
+	static String tMost = "Most Frequent";
+	static String tHigh = "Highest Win";
+	static String tHigh2 = "HW";
+	static String tMost2 = "MF";
+	static String tNotFound = "NOT FOUND";
+	static String tSup = "SUPP";
+	static String tCarregando = "LOADING...";
+	static Integer vProcurarUpdate = 0;
+	static String tBard = "Bard";
+
+	static void mudarIdioma(int i) {
+		if (i == 0) {
+			idiomaSelecionado = 0;
+			// EN
+			tComoUsar = "How to Use?";
+			tProcurarUpdate = "Search Update";
+			tAbrir = "START";
+			tChampSelect = "In Champion Select";
+			tClienteResolucao = "Client Resolution:";
+			tLane = "Pick a Lane";
+			tStat = "Stat:";
+			tChampion = "Champion:";
+			tAtribuir = "ASSIGN";
+			tMost = "Most Frequent";
+			tHigh = "Highest Win";
+			tNotFound = "NOT FOUND";
+			tCarregando = "LOADING...";
+			tHigh2 = "HW";
+			tMost2 = "MF";
+			tSup = "SUPP";
+			tBard = "Bard";
+			vProcurarUpdate = 0;
+		} else {
+			idiomaSelecionado = 1;
+			// PT
+			tComoUsar = "Como usar?";
+			tProcurarUpdate = "Procurar Atualização";
+			tAbrir = "COMEÇAR";
+			tChampSelect = "Na Seleção de Campeão";
+			tClienteResolucao = "Resolução Cliente:";
+			tLane = "Escolha a Lane";
+			tStat = "Stat:";
+			tBard = "Bardo";
+			tChampion = "Campeão:";
+			tAtribuir = "ATRIBUIR";
+			tMost = "Mais Frequente";
+			tHigh = "Maior Vitória";
+			tHigh2 = "MV";
+			tMost2 = "MF";
+			tNotFound = "NÃO ENCONTRADO";
+			tCarregando = "BUSCANDO...";
+			tSup = "SUP";
+			vProcurarUpdate = -20;
+		}
 	}
 
 	private static void pegarRuna(String url, int Z, int N) throws IOException, InterruptedException {
@@ -53,6 +126,7 @@ public class ThizeRT {
 	static Boolean feiticaria = false;
 	static Boolean determinacao = false;
 	static Boolean inspiracao = false;
+	static BufferedReader br;
 
 	private static void primeiraAbaRuna(int N, Elements rw) throws InterruptedException {
 		// PrimeiraAbaDasRunas
@@ -232,8 +306,8 @@ public class ThizeRT {
 			dcX = 109;
 			dcY -= 3;
 		}
-		x = ((x + dcX)/proporcao)+dpX;
-		y = ((y + dcY)/proporcao)+dpY;
+		x = ((x + dcX) / proporcao) + dpX;
+		y = ((y + dcY) / proporcao) + dpY;
 		robot.mouseMove(x.intValue(), y.intValue());
 		robot.mousePress(InputEvent.BUTTON1_MASK);// Clicar
 		robot.mouseRelease(InputEvent.BUTTON1_MASK);// Clicar
@@ -351,10 +425,10 @@ public class ThizeRT {
 		} else {
 			lane = "Sup";
 		}
-		if (win.equals("Most Frequent")) {
-			stat = "MF";
+		if (win.equals(tMost)) {
+			stat = tMost2;
 		} else {
-			stat = "HW";
+			stat = tHigh2;
 		}
 		String text = champ + " | " + lane + " | " + stat;
 		StringSelection selection = new StringSelection(text);
@@ -393,7 +467,7 @@ public class ThizeRT {
 		}
 		String url = "https://br.op.gg/champion/" + champp + "/statistics/" + lanee;
 		ThizeRT scrapper = new ThizeRT();
-		if (statt.equals("Most Frequent")) {
+		if (statt.equals(tMost)) {
 			winPick(url, scrapper, 0, "span");
 		} else {
 			winPick(url, scrapper, 1, "strong");

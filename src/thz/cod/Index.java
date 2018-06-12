@@ -3,8 +3,11 @@ package thz.cod;
 import java.awt.AWTException;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URISyntaxException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -38,6 +41,7 @@ public class Index extends javax.swing.JFrame {
 		jLabel4 = new javax.swing.JLabel();
 		jLabel3 = new javax.swing.JLabel();
 		jLabel1 = new javax.swing.JLabel();
+		idioma = new javax.swing.JComboBox<>();
 
 		setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 		setUndecorated(true);
@@ -50,12 +54,12 @@ public class Index extends javax.swing.JFrame {
 		jLabel2.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
 		jLabel2.setForeground(new java.awt.Color(20, 20, 20));
 		jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-		jLabel2.setText("START");
+		jLabel2.setText(ThizeRT.tAbrir);
 		jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
 			public void mouseClicked(java.awt.event.MouseEvent evt) {
 				try {
 					jLabel2MouseClicked(evt);
-				} catch (MalformedURLException | AWTException e) {
+				} catch (AWTException | IOException e) {
 					e.printStackTrace();
 				}
 			}
@@ -72,7 +76,7 @@ public class Index extends javax.swing.JFrame {
 
 		jLabel5.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
 		jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-		jLabel5.setText("How to Use?");
+		jLabel5.setText(ThizeRT.tComoUsar);
 		jLabel5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 		jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
 			public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -80,18 +84,22 @@ public class Index extends javax.swing.JFrame {
 			}
 		});
 		getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 380, -1, -1));
-		
+		idioma.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+		idioma.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "EN_US", "PT_BR" }));
+		idioma.setSelectedIndex(ThizeRT.idiomaSelecionado);
+		idioma.setBorder(null);
+		getContentPane().add(idioma, new org.netbeans.lib.awtextra.AbsoluteConstraints(181, 420, 70, 30));
 		update.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
 		update.setForeground(new java.awt.Color(255, 255, 255));
-		update.setText("Search Update");
+		update.setText(ThizeRT.tProcurarUpdate);
 		update.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 		update.addMouseListener(new java.awt.event.MouseAdapter() {
 			public void mouseClicked(java.awt.event.MouseEvent evt) {
 				update(evt);
 			}
 		});
-		getContentPane().add(update, new org.netbeans.lib.awtextra.AbsoluteConstraints(175, 400, -1, -1));
-		
+		getContentPane().add(update,
+				new org.netbeans.lib.awtextra.AbsoluteConstraints(175 + ThizeRT.vProcurarUpdate, 400, -1, -1));
 
 		jLabel4.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
 		jLabel4.setForeground(new java.awt.Color(255, 255, 255));
@@ -118,10 +126,11 @@ public class Index extends javax.swing.JFrame {
 
 		jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/thz/img/logo.png"))); // NOI18N
 		getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 180, -1, -1));
-		
-		URL url = new URL("https://raw.githubusercontent.com/thize/RuneToolFiles/master/bg3.png");
+
+		URL url = new URL("https://raw.githubusercontent.com/thize/RuneToolFiles/master/bg.png");
 		Image imagem = ImageIO.read(url);
-		//jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/thz/img/bg.png"))); // 
+		// jLabel1.setIcon(new
+		// javax.swing.ImageIcon(getClass().getResource("/thz/img/bg.png"))); //
 		jLabel1.setIcon(new javax.swing.ImageIcon(imagem)); // NOI18N NOI18N
 		getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 		pack();
@@ -131,7 +140,28 @@ public class Index extends javax.swing.JFrame {
 		dispose();
 	}
 
-	private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) throws MalformedURLException, AWTException {// GEN-FIRST:event_jLabel2MouseClicked
+	private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) throws AWTException, IOException {// GEN-FIRST:event_jLabel2MouseClicked
+		if (ThizeRT.idiomaSelecionado != idioma.getSelectedIndex()) {
+			if (idioma.getSelectedItem().equals("PT_BR")) {
+				ThizeRT.idiomaSelecionado = 1;
+				File ler = new File("language.txt");
+				ler.delete();
+				ler.exists();
+				FileWriter escrever = new FileWriter("language.txt");
+				escrever.write("PT_BR");
+				escrever.close();
+				ThizeRT.mudarIdioma(1);
+			} else {
+				ThizeRT.idiomaSelecionado = 0;
+				File ler = new File("language.txt");
+				ler.delete();
+				ler.exists();
+				FileWriter escrever = new FileWriter("language.txt");
+				escrever.write("EN_US");
+				escrever.close();
+				ThizeRT.mudarIdioma(0);
+			}
+		}
 		dispose();
 		Main nm = new Main(resX, resY);
 		nm.setVisible(true);
@@ -159,7 +189,7 @@ public class Index extends javax.swing.JFrame {
 			Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
 		}
 	}
-	
+
 	private void update(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_jLabel5MouseClicked
 		try {
 			Runtime.getRuntime().exec("java -jar Update.jar");
@@ -202,6 +232,7 @@ public class Index extends javax.swing.JFrame {
 
 	// Variables declaration - do not modify//GEN-BEGIN:variables
 	private javax.swing.JLabel jLabel1;
+	public static javax.swing.JComboBox<String> idioma;
 	private javax.swing.JLabel jLabel2;
 	private javax.swing.JLabel jLabel3;
 	private javax.swing.JLabel jLabel4;

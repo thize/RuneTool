@@ -63,7 +63,7 @@ public class Main extends javax.swing.JFrame {
 		tCriar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
 		tCriar.setForeground(new java.awt.Color(255, 255, 255));
 		tCriar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-		tCriar.setText("Pick a Lane");
+		tCriar.setText(ThizeRT.tLane);
 
 		botaoCor2.setBackground(new Color(40, 40, 40));
 
@@ -99,7 +99,6 @@ public class Main extends javax.swing.JFrame {
 				try {
 					voltarMouseClicked(evt);
 				} catch (IOException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
@@ -109,7 +108,7 @@ public class Main extends javax.swing.JFrame {
 		champSelect.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
 		champSelect.setForeground(new java.awt.Color(255, 255, 255));
 		champSelect.setSelected(true);
-		champSelect.setText("In Champion Select");
+		champSelect.setText(ThizeRT.tChampSelect);
 		champSelect.setBorder(null);
 		champSelect.setContentAreaFilled(false);
 		champSelect.setFocusPainted(false);
@@ -124,7 +123,7 @@ public class Main extends javax.swing.JFrame {
 				championSelect(evt);
 			}
 		});
-		getContentPane().add(champSelect, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 400, -1, -1));
+		getContentPane().add(champSelect, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 407, -1, -1));
 		mover.setToolTipText("");
 		mover.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
 			public void mouseDragged(java.awt.event.MouseEvent evt) {
@@ -151,7 +150,7 @@ public class Main extends javax.swing.JFrame {
 		getContentPane().add(tThize, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 450, -1, 19));
 		tVer.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
 		tVer.setForeground(new java.awt.Color(153, 153, 153));
-		tVer.setText("v2.0");
+		tVer.setText(ThizeRT.VERSAO);
 		tVer.setBounds(250, 450, -1, 19);
 		tVer.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 		tVer.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -235,7 +234,7 @@ public class Main extends javax.swing.JFrame {
 		iconSUPP.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
 		iconSUPP.setForeground(new java.awt.Color(255, 255, 255));
 		iconSUPP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/thz/img/supp.png"))); // NOI18N
-		iconSUPP.setText("SUPP");
+		iconSUPP.setText(ThizeRT.tSup);
 		iconSUPP.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 		iconSUPP.addMouseListener(new java.awt.event.MouseAdapter() {
 			public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -246,9 +245,9 @@ public class Main extends javax.swing.JFrame {
 
 		champ.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
 		champ.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Aatrox", "Ahri", "Akali", "Alistar",
-				"Amumu", "Anivia", "Annie", "Ashe", "Aurelion Sol", "Azir", "Bard", "Blitzcrank", "Brand", "Braum",
-				"Caitlyn", "Camille", "Cassiopeia", "Cho'Gath", "Corki", "Darius", "Diana", "Dr. Mundo ", "Draven",
-				"Ekko ", "Elise ", "Evelynn ", "Ezreal ", "Fiddlesticks", "Fiora ", "Fizz", "Galio", "Gangplank",
+				"Amumu", "Anivia", "Annie", "Ashe", "Aurelion Sol", "Azir", ThizeRT.tBard, "Blitzcrank", "Brand",
+				"Braum", "Caitlyn", "Camille", "Cassiopeia", "Cho'Gath", "Corki", "Darius", "Diana", "Dr. Mundo",
+				"Draven", "Ekko", "Elise", "Evelynn", "Ezreal", "Fiddlesticks", "Fiora", "Fizz", "Galio", "Gangplank",
 				"Garen", "Gnar", "Gragas", "Graves", "Hecarim", "Heimerdinger", "Illaoi", "Irelia", "Ivern", "Janna",
 				"Jarvan IV", "Jax", "Jayce", "Jhin", "Jinx", "Kai'sa", "Kalista", "Karma", "Karthus", "Kassadin",
 				"Katarina", "Kayle", "Kayn", "Kennen", "Kha'Zix", "Kindred", "Kled", "Kog'Maw", "LeBlanc", "Lee Sin",
@@ -265,13 +264,13 @@ public class Main extends javax.swing.JFrame {
 		getContentPane().add(champ, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 200, 110, 30));
 
 		stat.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-		stat.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Most Frequent", "Highest Win" }));
+		stat.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { ThizeRT.tMost, ThizeRT.tHigh }));
 		stat.setBorder(null);
 		getContentPane().add(stat, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 200, 110, 30));
 
 		tReso.setFont(new java.awt.Font("Arial", 1, 10)); // NOI18N
 		tReso.setForeground(new java.awt.Color(255, 255, 255));
-		tReso.setText("Client Resolution:");
+		tReso.setText(ThizeRT.tClienteResolucao);
 		getContentPane().add(tReso, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 385, -1, -1));
 
 		reso.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
@@ -282,12 +281,12 @@ public class Main extends javax.swing.JFrame {
 
 		tStat.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
 		tStat.setForeground(new java.awt.Color(255, 255, 255));
-		tStat.setText("Stat:");
+		tStat.setText(ThizeRT.tStat);
 		getContentPane().add(tStat, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 180, -1, -1));
 
 		tChamp.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
 		tChamp.setForeground(new java.awt.Color(255, 255, 255));
-		tChamp.setText("Champion:");
+		tChamp.setText(ThizeRT.tChampion);
 		getContentPane().add(tChamp, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 180, -1, -1));
 
 		logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/thz/img/logo.png"))); // NOI18N
@@ -313,7 +312,7 @@ public class Main extends javax.swing.JFrame {
 	static void assignReady() {
 		botaoCor.setBackground(new Color(161, 133, 77));
 		botaoCor2.setBackground(new Color(30, 144, 255));
-		tCriar.setText("ASSIGN");
+		tCriar.setText(ThizeRT.tAtribuir);
 		Main.tCriar.paintImmediately(Main.tCriar.getVisibleRect());
 		tCriar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 		tOpgg.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -360,7 +359,7 @@ public class Main extends javax.swing.JFrame {
 
 	public static void assignMouseRed() {
 		botaoCor.setBackground(new Color(180, 40, 40));
-		tCriar.setText("NOT FOUND");
+		tCriar.setText(ThizeRT.tNotFound);
 		tCriar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 		tOpgg.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 	}
@@ -380,7 +379,7 @@ public class Main extends javax.swing.JFrame {
 	}
 
 	private static void loading() {
-		tCriar.setText("LOADING...");
+		tCriar.setText(ThizeRT.tCarregando);
 		botaoCor.setBackground(new Color(40, 40, 180));
 		tCriar.paintImmediately(tCriar.getVisibleRect());
 	}
@@ -534,5 +533,4 @@ public class Main extends javax.swing.JFrame {
 	static javax.swing.JPanel botaoCor;
 	static javax.swing.JPanel botaoCor2;
 	// End of variables declaration//GEN-END:variables
-
 }
