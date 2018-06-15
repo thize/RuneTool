@@ -43,7 +43,7 @@ public class ThizeRT {
 	public static String stat = "", champ = "", lane = "", linha;
 	static Robot robot;
 	static Rectangle ret = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
-	static String VERSAO = "v2.0";
+	static String VERSAO = "v2.2";
 	static double versaoL = 0;
 
 	public static void main(String[] args) throws AWTException, InterruptedException, IOException {
