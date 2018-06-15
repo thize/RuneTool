@@ -14,6 +14,7 @@ public class Main extends javax.swing.JFrame {
 	private static String lane = "";
 	int xMouse = 0, yMouse = 0;
 	static int ready = 0;
+	static boolean imagemEncontrada = false;
 
 	public Main(int x, int y) {
 		java.net.URL url = this.getClass().getResource("/thz/img/thz.png");
@@ -365,6 +366,18 @@ public class Main extends javax.swing.JFrame {
 	}
 
 	private static void assignMouseClicked(java.awt.event.MouseEvent evt) throws InterruptedException, IOException {// GEN-FIRST:event_jLabel2MouseClicked
+		ImageScanner imgScn = new ImageScanner();
+		
+		imgScn.rodar2(ImageScanner.link2);
+		imagemEncontrada = imgScn.rodar();
+		if (!imagemEncontrada) {
+			imgScn.rodar2(ImageScanner.link2);
+			imagemEncontrada = imgScn.rodar();
+		}
+		if (!imagemEncontrada) {
+			imgScn.rodar2(ImageScanner.link22);
+			imagemEncontrada = imgScn.rodar();
+		}
 		ThizeRT.q = 12;
 		ThizeRT.d = 23;// AumentarSegundoForPara2Runa
 		ThizeRT.dt = 0;
@@ -376,6 +389,7 @@ public class Main extends javax.swing.JFrame {
 		loading();
 		ThizeRT.chamarRuna((String) champ.getSelectedItem(), lane, (String) stat.getSelectedItem(),
 				(String) reso.getSelectedItem());
+
 	}
 
 	private static void loading() {

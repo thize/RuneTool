@@ -26,7 +26,7 @@ public class ThizeRT {
 	public static String stat = "", champ = "", lane = "", linha;
 	static Robot robot;
 	static Rectangle ret = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
-	static String VERSAO = "v2.1";
+	static String VERSAO = "v2.2";
 
 	public static void main(String[] args) throws AWTException, InterruptedException, IOException {
 		robot = new Robot();
@@ -308,9 +308,10 @@ public class ThizeRT {
 		}
 		x = ((x + dcX) / proporcao) + dpX;
 		y = ((y + dcY) / proporcao) + dpY;
-		robot.mouseMove(x.intValue(), y.intValue());
+		robot.mouseMove(x.intValue() + ImageScanner.thizeX.intValue(), y.intValue() + ImageScanner.thizeY.intValue());
 		robot.mousePress(InputEvent.BUTTON1_MASK);// Clicar
 		robot.mouseRelease(InputEvent.BUTTON1_MASK);// Clicar
+
 	}
 
 	private static void linhasPrimeiraAba(int c, int a) throws InterruptedException {
@@ -467,6 +468,14 @@ public class ThizeRT {
 		}
 		String url = "https://br.op.gg/champion/" + champp + "/statistics/" + lanee;
 		ThizeRT scrapper = new ThizeRT();
+		ImageScanner.thizeX = ImageScanner.valorX;
+		ImageScanner.thizeY = ImageScanner.valorY;
+		ImageScanner.thizeX = (ImageScanner.thizeX - (ret.width - (1280 / proporcao)) / 2);
+		ImageScanner.thizeY = (ImageScanner.thizeY - (ret.height - (720 / proporcao)) / 2);
+		if (!Main.imagemEncontrada) {
+			ImageScanner.thizeX = 0.0;
+			ImageScanner.thizeY = 0.0;
+		}
 		if (statt.equals(tMost)) {
 			winPick(url, scrapper, 0, "span");
 		} else {
