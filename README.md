@@ -1,15 +1,16 @@
-# Thize Rune Tool
+# BETA Thize Rune Tool
 
 ============================================================================
 
 ### N E W
 ---
 - [x] Multi Language UI
+- [x] Move Client
 
 
 | Version        | Download |
 | ------------- | -----:|
-| League Rune Tool v2.1      | [![GitHub issues](https://img.shields.io/badge/Download--feb62b.svg?style=flat-square)](https://runetool.github.io/)   
+| League Rune Tool v2.2      | [![GitHub issues](https://img.shields.io/badge/Download--feb62b.svg?style=flat-square)](https://runetool.github.io/)   
 
 ![scr](https://i.imgur.com/kj22p28.png)
 ![scr](https://i.imgur.com/jFjabJM.png)
@@ -45,7 +46,7 @@ I can't give you any kind of update now or anytime in the immediate future, but 
 - [x] Champion Win Rate Stat
 - [x] Champion Pick Rate Stat
 - [x] Multi Language UI
-
+- [x] Move Client
 
 
 
