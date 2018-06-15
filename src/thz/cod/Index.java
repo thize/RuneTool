@@ -88,7 +88,7 @@ public class Index extends javax.swing.JFrame {
 		idioma.setBorder(null);
 		getContentPane().add(idioma, new org.netbeans.lib.awtextra.AbsoluteConstraints(181, 420, 70, 30));
 		update.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
-		update.setForeground(new java.awt.Color(255, 255, 255));
+		update.setForeground(new java.awt.Color(10, 255, 10));
 		update.setText(ThizeRT.tProcurarUpdate);
 		update.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 		update.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -97,7 +97,7 @@ public class Index extends javax.swing.JFrame {
 			}
 		});
 		getContentPane().add(update,
-				new org.netbeans.lib.awtextra.AbsoluteConstraints(175 + ThizeRT.vProcurarUpdate, 400, -1, -1));
+				new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 400, -1, -1));
 
 		jLabel4.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
 		jLabel4.setForeground(new java.awt.Color(255, 255, 255));
@@ -125,7 +125,7 @@ public class Index extends javax.swing.JFrame {
 		jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/thz/img/logo.png"))); // NOI18N
 		getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 180, -1, -1));
 
-		URL url = new URL("https://raw.githubusercontent.com/thize/RuneToolFiles/master/bg.png");
+		URL url = new URL("https://raw.githubusercontent.com/thize/RuneToolFiles/master/bg2.png");
 		Image imagem = ImageIO.read(url);
 		// jLabel1.setIcon(new
 		// javax.swing.ImageIcon(getClass().getResource("/thz/img/bg.png"))); //

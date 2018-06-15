@@ -19,27 +19,8 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 public class ThizeRT {
-	public static int dpY = 10, dcY, dcX, dpX = 44, d, q, dt = 0, posi, aux;
-	public static int x, y, n1, n2, n3, n4, idiomaSelecionado = 0;
-	public static double versaoG, proporcao;;
-	public static boolean selecao = true;
-	public static String stat = "", champ = "", lane = "", linha;
-	static Robot robot;
-	static Rectangle ret = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
-	static String VERSAO = "v2.2";
-
-	public static void main(String[] args) throws AWTException, InterruptedException, IOException {
-		robot = new Robot();
-		br = new BufferedReader(new FileReader("language.txt"));
-		linha = br.readLine();
-		if (linha.equals("PT_BR")) {
-			mudarIdioma(1);
-		}
-		Index.main(args);
-	}
-
 	static String tComoUsar = "How to Use?";
-	static String tProcurarUpdate = "Search Update";
+	static String tProcurarUpdate = "";
 	static String tAbrir = "START";
 	static String tChampSelect = "In Champion Select";
 	static String tClienteResolucao = "Client Resolution:";
@@ -54,15 +35,49 @@ public class ThizeRT {
 	static String tNotFound = "NOT FOUND";
 	static String tSup = "SUPP";
 	static String tCarregando = "LOADING...";
-	static Integer vProcurarUpdate = 0;
 	static String tBard = "Bard";
+	public static int dpY = 10, dcY, dcX, dpX = 44, d, q, dt = 0, posi, aux;
+	public static int x, y, n1, n2, n3, n4, idiomaSelecionado = 0;
+	public static double versaoG, proporcao;;
+	public static boolean selecao = true;
+	public static String stat = "", champ = "", lane = "", linha;
+	static Robot robot;
+	static Rectangle ret = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
+	static String VERSAO = "v2.0";
+	static double versaoL = 0;
+
+	public static void main(String[] args) throws AWTException, InterruptedException, IOException {
+		ver();
+		robot = new Robot();
+		br = new BufferedReader(new FileReader("language.txt"));
+		linha = br.readLine();
+		if (linha.equals("PT_BR")) {
+			mudarIdioma(1);
+		}
+		Index.main(args);
+	}
+
+	public static void ver() throws IOException {
+		Document web = null;
+		web = Jsoup.connect("https://raw.githubusercontent.com/thize/RuneToolFiles/master/ver.txt").get();
+		Elements clas = web.getElementsByTag("body");
+		versaoG = Double.parseDouble(clas.text());
+		br = new BufferedReader(new FileReader("ver.txt"));
+		String linha = br.readLine();
+		versaoL = Double.parseDouble(linha);
+		if (versaoG > versaoL) {
+			tProcurarUpdate = "CLICK HERE TO UPDATE";
+		}
+	}
 
 	static void mudarIdioma(int i) {
 		if (i == 0) {
+			if (versaoG > versaoL) {
+				tProcurarUpdate = "CLICK HERE TO UPDATE";
+			}
 			idiomaSelecionado = 0;
 			// EN
 			tComoUsar = "How to Use?";
-			tProcurarUpdate = "Search Update";
 			tAbrir = "START";
 			tChampSelect = "In Champion Select";
 			tClienteResolucao = "Client Resolution:";
@@ -78,12 +93,13 @@ public class ThizeRT {
 			tMost2 = "MF";
 			tSup = "SUPP";
 			tBard = "Bard";
-			vProcurarUpdate = 0;
 		} else {
+			if (versaoG > versaoL) {
+				tProcurarUpdate = "CLICK AQUI PARA ATUALIZAR";
+			}
 			idiomaSelecionado = 1;
 			// PT
 			tComoUsar = "Como usar?";
-			tProcurarUpdate = "Procurar Atualização";
 			tAbrir = "COMEÇAR";
 			tChampSelect = "Na Seleção de Campeão";
 			tClienteResolucao = "Resolução Cliente:";
@@ -99,7 +115,6 @@ public class ThizeRT {
 			tNotFound = "NÃO ENCONTRADO";
 			tCarregando = "BUSCANDO...";
 			tSup = "SUP";
-			vProcurarUpdate = -20;
 		}
 	}
 
