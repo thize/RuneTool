@@ -11,19 +11,19 @@ import java.util.logging.Logger;
 
 public class Main extends javax.swing.JFrame {
 	private static final long serialVersionUID = 1L;
-	private static String lane = "";
+	static String lane = "";
 	int xMouse = 0, yMouse = 0;
 	static int ready = 0;
 	static boolean imagemEncontrada = false;
 
-	public Main(int x, int y) {
+	public Main(int resX, int resY) {
 		java.net.URL url = this.getClass().getResource("/thz/img/thz.png");
 		Image imagemTitulo = Toolkit.getDefaultToolkit().getImage(url);
 		this.setIconImage(imagemTitulo);
 		initComponents();
 		setLocationRelativeTo(null);
-		if (Index.resX != 0 && Index.resY != 0) {
-			this.setLocation(Index.resX, Index.resY);
+		if (resX != 0 && resY != 0) {
+			this.setLocation(resX, resY);
 		}
 	}
 
@@ -151,7 +151,7 @@ public class Main extends javax.swing.JFrame {
 		getContentPane().add(tThize, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 450, -1, 19));
 		tVer.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
 		tVer.setForeground(new java.awt.Color(153, 153, 153));
-		tVer.setText(ThizeRT.VERSAO);
+		tVer.setText("v" + ThizeRT.VERSAO);
 		tVer.setBounds(250, 450, -1, 19);
 		tVer.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 		tVer.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -276,8 +276,9 @@ public class Main extends javax.swing.JFrame {
 
 		reso.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
 		reso.setModel(new javax.swing.DefaultComboBoxModel<>(
-				new String[] { "1280x720", "1024x576", "1600x900", "1920x1080" }));
+				new String[] { "1024x576", "1280x720", "1600x900", "1920x1080" }));
 		reso.setBorder(null);
+		reso.setSelectedIndex(ThizeRT.iResolucao);
 		getContentPane().add(reso, new org.netbeans.lib.awtextra.AbsoluteConstraints(175, 400, 90, 30));
 
 		tStat.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -366,8 +367,11 @@ public class Main extends javax.swing.JFrame {
 	}
 
 	private static void assignMouseClicked(java.awt.event.MouseEvent evt) throws InterruptedException, IOException {// GEN-FIRST:event_jLabel2MouseClicked
+		tCriar.setText(ThizeRT.tCarregando);
+		botaoCor.setBackground(new Color(40, 40, 180));
+		tCriar.paintImmediately(tCriar.getVisibleRect());
+		ThizeRT.sobescrever(1, reso.getSelectedItem().toString());
 		ImageScanner imgScn = new ImageScanner();
-		
 		imgScn.rodar2(ImageScanner.link2);
 		imagemEncontrada = imgScn.rodar();
 		if (!imagemEncontrada) {
@@ -386,16 +390,8 @@ public class Main extends javax.swing.JFrame {
 		ThizeRT.feiticaria = false;
 		ThizeRT.determinacao = false;
 		ThizeRT.inspiracao = false;
-		loading();
-		ThizeRT.chamarRuna((String) champ.getSelectedItem(), lane, (String) stat.getSelectedItem(),
-				(String) reso.getSelectedItem());
-
-	}
-
-	private static void loading() {
-		tCriar.setText(ThizeRT.tCarregando);
-		botaoCor.setBackground(new Color(40, 40, 180));
-		tCriar.paintImmediately(tCriar.getVisibleRect());
+		ThizeRT.chamarRuna(champ.getSelectedItem().toString(), lane, stat.getSelectedItem().toString(),
+				reso.getSelectedItem().toString());
 	}
 
 	private void iconTOPMouseClicked(java.awt.event.MouseEvent evt) {
@@ -487,9 +483,9 @@ public class Main extends javax.swing.JFrame {
 	}
 
 	private void voltarMouseClicked(java.awt.event.MouseEvent evt) throws IOException {
+		Index x = new Index(this.getX(), this.getY());
+		x.setVisible(true);
 		dispose();
-		Index nm = new Index(Index.resX, Index.resY);
-		nm.setVisible(true);
 	}
 
 	private void minimizarMouseClicked(java.awt.event.MouseEvent evt) {

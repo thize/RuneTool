@@ -10,7 +10,10 @@ import java.awt.datatransfer.StringSelection;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 
 import org.jsoup.Jsoup;
@@ -36,25 +39,58 @@ public class ThizeRT {
 	static String tSup = "SUPP";
 	static String tCarregando = "LOADING...";
 	static String tBard = "Bard";
-	public static int dpY = 10, dcY, dcX, dpX = 44, d, q, dt = 0, posi, aux;
-	public static int x, y, n1, n2, n3, n4, idiomaSelecionado = 0;
+	public static Integer dpY = 10, dcY, dcX, dpX = 44, d, q, dt = 0, posi, aux;
+	public static Integer x, y, n1, n2, n3, n4, idiomaSelecionado = 0;
 	public static double versaoG, proporcao;;
 	public static boolean selecao = true;
 	public static String stat = "", champ = "", lane = "", linha;
 	static Robot robot;
+	static Integer iResolucao = 0;
 	static Rectangle ret = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
-	static String VERSAO = "v2.2";
+	static String VERSAO = "2.3", idioma = "EN_US", resolucao = "1024x576", versao = "2.3";
 	static double versaoL = 0;
 
 	public static void main(String[] args) throws AWTException, InterruptedException, IOException {
+		config();
 		ver();
 		robot = new Robot();
-		br = new BufferedReader(new FileReader("language.txt"));
-		linha = br.readLine();
-		if (linha.equals("PT_BR")) {
-			mudarIdioma(1);
-		}
 		Index.main(args);
+	}
+
+	private static void config() throws FileNotFoundException, IOException {
+		try {
+			br = new BufferedReader(new FileReader("config.txt"));
+			versao = br.readLine();
+			resolucao = br.readLine();
+			idioma = br.readLine();
+			if (idioma.equals("PT_BR")) {
+				mudarIdioma(1);
+			}
+			lerConfig();
+		} catch (Exception e) {
+			File file = new File("ver.txt");
+			file.delete();
+			file = new File("language.txt");
+			file.delete();
+			FileWriter criar = new FileWriter("config.txt");
+			String config = VERSAO + "\n" + resolucao + "\n" + idioma;
+			System.out.println(config);
+			criar.write(config);
+			criar.close();
+			config();
+		}
+	}
+
+	static void lerConfig() {
+		if (resolucao.equals("1280x720")) {
+			iResolucao = 1;
+		} else if (resolucao.equals("1600x900")) {
+			iResolucao = 2;
+		} else if (resolucao.equals("1920x1080")) {
+			iResolucao = 3;
+		}else {
+			iResolucao = 0;
+		}
 	}
 
 	public static void ver() throws IOException {
@@ -62,9 +98,7 @@ public class ThizeRT {
 		web = Jsoup.connect("https://raw.githubusercontent.com/thize/RuneToolFiles/master/ver.txt").get();
 		Elements clas = web.getElementsByTag("body");
 		versaoG = Double.parseDouble(clas.text());
-		br = new BufferedReader(new FileReader("ver.txt"));
-		String linha = br.readLine();
-		versaoL = Double.parseDouble(linha);
+		versaoL = Double.parseDouble(versao);
 		if (versaoG > versaoL) {
 			tProcurarUpdate = "CLICK HERE TO UPDATE";
 		}
@@ -512,5 +546,17 @@ public class ThizeRT {
 			pegarRuna(url, 8, 1);
 		}
 
+	}
+
+	public static void sobescrever(int a, String string) throws IOException {
+		FileWriter criar = new FileWriter("config.txt");
+		String config = versao + "\n" + resolucao + "\n" + string;
+		if (a == 0) {
+			config = string + "\n" + resolucao + "\n" + idioma;
+		} else if (a == 1) {
+			config = versao + "\n" + string + "\n" + idioma;
+		}
+		criar.write(config);
+		criar.close();
 	}
 }

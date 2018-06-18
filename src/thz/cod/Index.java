@@ -3,8 +3,6 @@ package thz.cod;
 import java.awt.AWTException;
 import java.awt.Image;
 import java.awt.Toolkit;
-import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.logging.Level;
@@ -96,8 +94,7 @@ public class Index extends javax.swing.JFrame {
 				update(evt);
 			}
 		});
-		getContentPane().add(update,
-				new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 400, -1, -1));
+		getContentPane().add(update, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 400, -1, -1));
 
 		jLabel4.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
 		jLabel4.setForeground(new java.awt.Color(255, 255, 255));
@@ -140,29 +137,47 @@ public class Index extends javax.swing.JFrame {
 
 	private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) throws AWTException, IOException {// GEN-FIRST:event_jLabel2MouseClicked
 		if (ThizeRT.idiomaSelecionado != idioma.getSelectedIndex()) {
+			int i = 1;
 			if (idioma.getSelectedItem().equals("PT_BR")) {
-				ThizeRT.idiomaSelecionado = 1;
-				File ler = new File("language.txt");
-				ler.delete();
-				ler.exists();
-				FileWriter escrever = new FileWriter("language.txt");
-				escrever.write("PT_BR");
-				escrever.close();
-				ThizeRT.mudarIdioma(1);
+				ThizeRT.sobescrever(2, "PT_BR");
 			} else {
-				ThizeRT.idiomaSelecionado = 0;
-				File ler = new File("language.txt");
-				ler.delete();
-				ler.exists();
-				FileWriter escrever = new FileWriter("language.txt");
-				escrever.write("EN_US");
-				escrever.close();
-				ThizeRT.mudarIdioma(0);
+				i = 0;
+				ThizeRT.sobescrever(2, "EN_US");
 			}
+			ThizeRT.idiomaSelecionado = i;
+			ThizeRT.mudarIdioma(i);
 		}
+		ThizeRT.lerConfig();
+		zerar();
+		Main x = new Main(this.getX(), this.getY());
+		x.setVisible(true);
 		dispose();
-		Main nm = new Main(resX, resY);
-		nm.setVisible(true);
+	}
+
+	private void zerar() {
+		Main.lane = "";
+		Main.ready = 0;
+		Main.imagemEncontrada = false;
+		ThizeRT.dpY = 10;
+		ThizeRT.dcY = null;
+		ThizeRT.dcX = null;
+		ThizeRT.dpX = 44;
+		ThizeRT.d = null;
+		ThizeRT.q = null;
+		ThizeRT.dt = null;
+		ThizeRT.posi = null;
+		ThizeRT.aux = 0;
+		ThizeRT.n1 = null;
+		ThizeRT.n2 = null;
+		ThizeRT.n3 = null;
+		ThizeRT.n4 = null;
+		ThizeRT.x = null;
+		ThizeRT.y = null;
+		ThizeRT.selecao = true;
+		ThizeRT.stat = "";
+		ThizeRT.champ = "";
+		ThizeRT.lane = "";
+		ThizeRT.linha = null;
 	}
 
 	private void moverMouseDragged(java.awt.event.MouseEvent evt) {
